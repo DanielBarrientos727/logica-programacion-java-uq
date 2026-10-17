@@ -1,6 +1,6 @@
 # Lógica de Programación en Java — Universidad del Quindío
 
-Repositorio académico dedicado a recopilar, organizar y desarrollar ejercicios, ejemplos, talleres y prácticas de **Lógica de Programación utilizando Java**, correspondientes al proceso de formación en Ingeniería de Sistemas y Computación de la Universidad del Quindío.
+Buenos días compañeros de universidad, este es un epositorio académico dedicado a recopilar, organizar y desarrollar ejercicios, ejemplos, talleres y prácticas de **Lógica de Programación utilizando Java**, correspondientes al proceso de formación en Ingeniería de Sistemas y Computación de la Universidad del Quindío.
 
 El contenido se basa principalmente en los ejemplos explicados en clase, las actividades propuestas y los talleres orientados por la docente de la asignatura. También incluye soluciones y ejercicios de práctica elaborados para reforzar los conceptos estudiados y consolidar progresivamente los fundamentos de la programación.
 
@@ -26,3 +26,4 @@ El código se organiza con fines didácticos y puede modificarse, ampliarse o co
 **Programa académico:** Ingeniería de Sistemas y Computación  
 **Institución:** Universidad del Quindío  
 **Lenguaje de programación:** Java
+**Creador:** Daniel Barrientos
