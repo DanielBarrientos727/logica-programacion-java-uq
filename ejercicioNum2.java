@@ -31,3 +31,4 @@ public class ejercicioNum2 {
         System.out.println(mensaje);
     }
 }
+
