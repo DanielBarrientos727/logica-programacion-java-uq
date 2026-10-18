@@ -1,62 +1,88 @@
-# Lógica de Programación en Java — Universidad del Quindío
+# Lógica de Programación en Java
 
-Repositorio académico para acompañar mi aprendizaje en la asignatura **Lógica de Programación** de Ingeniería de Sistemas y Computación en la Universidad del Quindío.
+<p align="center">
+  <strong>Universidad del Quindío · Ingeniería de Sistemas y Computación</strong>
+  <br>
+  Fundamentos de programación, pensamiento lógico y resolución de problemas con Java.
+</p>
 
-Aquí guardo ejercicios, talleres y prácticas que realizo para entender mejor la lógica, aprender Java y resolver problemas paso a paso. La prioridad es el trabajo de la asignatura; los recursos externos me sirven como apoyo para repasar y reforzar los temas.
+<p align="center">
+  <img src="https://img.shields.io/badge/Estado-En%20aprendizaje-378ADD?style=flat-square" alt="Estado: En aprendizaje">
+  <img src="https://img.shields.io/badge/Lenguaje-Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" alt="Lenguaje Java">
+  <img src="https://img.shields.io/badge/Universidad-del%20Quind%C3%ADo-217A4B?style=flat-square" alt="Universidad del Quindío">
+  <img src="https://img.shields.io/github/license/DanielBarrientos727/logica-programacion-java-uq?style=flat-square" alt="Licencia">
+  <br>
+  <img src="https://img.shields.io/github/actions/workflow/status/DanielBarrientos727/logica-programacion-java-uq/maven.yml?branch=main&style=flat-square&label=compilaci%C3%B3n" alt="Estado de compilación">
+</p>
 
-## Organización
+---
 
-- **`ejercicios/fundamentos/`**: primeros programas, variables y tipos de datos.
-- **`ejercicios/operadores/`**: operadores aritméticos, de asignación, comparación y lógicos.
-- **`ejercicios/expresiones/`**: expresiones y operaciones matemáticas.
-- **`ejercicios/condicionales/`**: decisiones con `if`, `else` y `switch`.
-- **`ejercicios/ciclos/`**: ciclos, series, sumas y otros ejercicios repetitivos.
-- **`ejercicios/metodos/`**: métodos, parámetros, retornos y reutilización de código.
-- **`ejercicios/cadenas/`**: texto y operaciones con cadenas.
-- **`ejercicios/retos/`**: ejercicios de práctica más extensos.
-- **`ejercicios/otros/`**: ejercicios pendientes de clasificar por tema.
-- **`talleres/`**: talleres y actividades de la asignatura, separados de los ejercicios individuales.
+Repositorio académico para acompañar mi aprendizaje en la asignatura **Lógica de Programación**, del programa de Ingeniería de Sistemas y Computación de la Universidad del Quindío.
 
-La organización puede cambiar a medida que avance en la materia.
+Aquí reúno ejercicios, talleres y prácticas que realizo para aprender Java, desarrollar el pensamiento computacional y resolver problemas paso a paso.
 
-## Temas que estoy practicando
+La prioridad es la asignatura y el trabajo realizado durante mi formación universitaria. Los cursos y recursos externos son un complemento para repasar conceptos y seguir aprendiendo.
 
-- Fundamentos de Java, variables, constantes y tipos de datos.
-- Operadores y expresiones aritméticas, relacionales y lógicas.
-- Cadenas de texto.
-- Condicionales y toma de decisiones.
-- Ciclos y métodos.
-- Arrays y estructuras de datos.
-- Resolución de problemas mediante ejercicios y talleres.
+## Organización del repositorio
+
+| Carpeta | Contenido |
+|---|---|
+| [`ejercicios/fundamentos/`](ejercicios/fundamentos/) | Primeros programas, variables, constantes y tipos de datos. |
+| [`ejercicios/operadores/`](ejercicios/operadores/) | Operadores aritméticos, de asignación, comparación y lógicos. |
+| [`ejercicios/expresiones/`](ejercicios/expresiones/) | Expresiones y operaciones matemáticas. |
+| [`ejercicios/condicionales/`](ejercicios/condicionales/) | Decisiones con `if`, `else` y `switch`. |
+| [`ejercicios/ciclos/`](ejercicios/ciclos/) | Ciclos, series, sumas y operaciones repetitivas. |
+| [`ejercicios/metodos/`](ejercicios/metodos/) | Métodos, parámetros, retornos y reutilización de código. |
+| [`ejercicios/cadenas/`](ejercicios/cadenas/) | Cadenas de texto y sus operaciones. |
+| [`ejercicios/retos/`](ejercicios/retos/) | Ejercicios de práctica más extensos. |
+| [`ejercicios/otros/`](ejercicios/otros/) | Ejercicios pendientes de clasificar. |
+| [`talleres/`](talleres/) | Talleres y actividades de la asignatura. |
+
+La organización irá evolucionando a medida que avance en la materia.
+
+## Temas de estudio
+
+- [x] Fundamentos de Java, variables y tipos de datos.
+- [x] Operadores y expresiones.
+- [x] Cadenas de texto.
+- [x] Condicionales y toma de decisiones.
+- [x] Arrays.
+- [x] Ciclos.
+- [x] Métodos y funciones.
+- [ ] Programación Orientada a Objetos (POO).
+- [ ] Excepciones y depuración.
+
+> Las marcas indican mi seguimiento del curso complementario; no representan necesariamente el estado de evaluación de la asignatura universitaria.
 
 ## Curso complementario: Java + POO
 
-También utilizo el curso de Java de **Brais Moure (MoureDev)** para repasar conceptos y estudiar a mi ritmo. Es un recurso de apoyo: el objetivo principal de este repositorio sigue siendo practicar lógica de programación y llevar un registro de mi aprendizaje.
+Para reforzar lo aprendido, utilizo el curso de Java de **Brais Moure (MoureDev)**. Me sirve para repasar conceptos, practicar con ejemplos y avanzar gradualmente hacia la Programación Orientada a Objetos.
 
-- [Curso Java y POO en YouTube](https://www.youtube.com/watch?v=JOAqpdM36wI)
-- [Repositorio de referencia de MoureDev](https://github.com/mouredev/hello-java)
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=JOAqpdM36wI">
+    <img src="https://img.shields.io/badge/YouTube-Curso%20Java%20%2B%20POO-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="Curso Java y POO en YouTube">
+  </a>
+  <a href="https://github.com/mouredev/hello-java">
+    <img src="https://img.shields.io/badge/GitHub-Repositorio%20de%20referencia-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositorio de referencia de MoureDev">
+  </a>
+</p>
 
-### Seguimiento del curso
-
-- [x] Introducción y configuración del entorno ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=307s))
-- [x] Primeros pasos, variables y tipos de datos ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=4250s))
-- [x] Operadores ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=6803s))
-- [x] Strings y sus métodos más comunes ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=8140s))
-- [x] Condicionales ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=9908s))
-- [x] Arrays ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=11115s))
-- [x] Bucles ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=15862s))
-- [x] Métodos y funciones ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=18100s))
-- [ ] Programación Orientada a Objetos: clases, objetos, encapsulamiento, herencia y polimorfismo ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=19586s))
-- [ ] Excepciones, depuración y contenido adicional ([vídeo](https://www.youtube.com/watch?v=JOAqpdM36wI&t=27441s))
+El curso es un recurso de apoyo: **este repositorio sigue centrado en mi aprendizaje de Lógica de Programación en la Universidad del Quindío**.
 
 ## Propósito
 
-Este repositorio es un registro personal y académico de práctica. Los ejercicios se pueden corregir y mejorar a medida que aprenda más. La idea no es solo que el código funcione, sino entender qué hace y por qué.
+Este repositorio es mi cuaderno de práctica en Java. El código puede cambiar, corregirse y mejorar conforme adquiera experiencia. Mi objetivo no es solamente conseguir que un programa funcione, sino comprender su lógica, saber explicar lo que hace y aprender a resolver problemas de forma autónoma.
 
-El curso de MoureDev y su repositorio pertenecen a su autor. Este repositorio es independiente y no está afiliado oficialmente con MoureDev.
+El curso y el repositorio de MoureDev pertenecen a su autor original. Este proyecto es independiente y no está afiliado oficialmente con MoureDev.
 
-**Programa:** Ingeniería de Sistemas y Computación  
-**Institución:** Universidad del Quindío  
-**Asignatura:** Lógica de Programación  
-**Lenguaje:** Java  
-**Autor:** Daniel Barrientos
+---
+
+<p align="center">
+  <strong>Daniel Barrientos</strong>
+  <br>
+  Ingeniería de Sistemas y Computación
+  <br>
+  Universidad del Quindío · Armenia, Colombia
+  <br><br>
+  <sub>Aprender · Practicar · Comprender · Mejorar</sub>
+</p>****
