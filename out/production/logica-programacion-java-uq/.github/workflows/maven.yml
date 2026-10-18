@@ -1,0 +1,32 @@
+
+name: Java CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Configurar Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Compilar ejercicios Java
+        run: |
+          mkdir -p build
+          find . -type f -name "*.java" \
+            -not -path "./.git/*" \
+            -not -path "./out/*" \
+            -print0 |
+            xargs -0 -r javac -d build
