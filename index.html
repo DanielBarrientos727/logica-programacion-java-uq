@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lógica de Programación en Java - UQ</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-hover: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --accent: #f59e0b;
+      --border-color: #334155;
+      --badge-fundamentos: #3b82f6;
+      --badge-operadores: #10b981;
+      --badge-expresiones: #8b5cf6;
+      --badge-condicionales: #f59e0b;
+      --badge-ciclos: #ec4899;
+      --badge-metodos: #06b6d4;
+      --badge-cadenas: #14b8a6;
+      --badge-retos: #ef4444;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --card-hover: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --accent: #d97706;
+      --border-color: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary);
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .controls {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: var(--text-muted);
+      width: 18px;
+      height: 18px;
+    }
+
+    .category-filters {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-fundamentos { background-color: var(--badge-fundamentos); }
+    .badge-operadores { background-color: var(--badge-operadores); }
+    .badge-expresiones { background-color: var(--badge-expresiones); }
+    .badge-condicionales { background-color: var(--badge-condicionales); }
+    .badge-ciclos { background-color: var(--badge-ciclos); }
+    .badge-metodos { background-color: var(--badge-metodos); }
+    .badge-cadenas { background-color: var(--badge-cadenas); }
+    .badge-retos { background-color: var(--badge-retos); }
+
+    .card-body {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 0.75rem;
+    }
+
+    .file-path {
+      font-family: monospace;
+      color: var(--primary);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="theme-toggle" id="themeToggle">☀️ Modo Claro</button>
+      <h1>Lógica de Programación en Java</h1>
+      <p>Universidad del Quindío · Ingeniería de Sistemas y Computación</p>
+    </header>
+
+    <div class="controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar ejercicios por nombre o descripción...">
+      </div>
+
+      <div class="category-filters" id="categoryFilters">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="fundamentos">Fundamentos</button>
+        <button class="filter-btn" data-category="operadores">Operadores</button>
+        <button class="filter-btn" data-category="expresiones">Expresiones</button>
+        <button class="filter-btn" data-category="condicionales">Condicionales</button>
+        <button class="filter-btn" data-category="ciclos">Ciclos</button>
+        <button class="filter-btn" data-category="metodos">Métodos</button>
+        <button class="filter-btn" data-category="cadenas">Cadenas</button>
+        <button class="filter-btn" data-category="retos">Retos</button>
+      </div>
+    </div>
+
+    <main class="exercise-grid" id="exerciseGrid"></main>
+
+    <footer>
+      <p>Daniel Barrientos · Aprendizaje y Resolución de Problemas en Java</p>
+    </footer>
+  </div>
+
+  <script>
+    const exercises = [
+      // Fundamentos
+      { title: "TipoDato.java", category: "fundamentos", desc: "Uso y declaración de los diferentes tipos de datos primitivos en Java.", path: "ejercicios/fundamentos/TipoDato.java" },
+      { title: "VariablesyConstantes.java", category: "fundamentos", desc: "Definición y diferencia entre variables modificables y constantes con final.", path: "ejercicios/fundamentos/VariablesyConstantes.java" },
+      { title: "EjercicioNovato.java", category: "fundamentos", desc: "Prácticas iniciales de sintaxis e impresión en consola.", path: "ejercicios/fundamentos/EjercicioNovato.java" },
+      
+      // Operadores
+      { title: "Operadores.java", category: "operadores", desc: "Operaciones aritméticas, lógicas y relacionales básicas.", path: "ejercicios/operadores/Operadores.java" },
+      { title: "PracticaOperadores.java", category: "operadores", desc: "Ejercicios combinados de asignación y operadores de incremento/decremento.", path: "ejercicios/operadores/PracticaOperadores.java" },
+      { title: "AnalizadorAbecedario.java", category: "operadores", desc: "Análisis y operaciones con caracteres de abecedario.", path: "ejercicios/operadores/AnalizadorAbecedario.java" },
+
+      // Expresiones
+      { title: "CuboNumeros.java", category: "expresiones", desc: "Cálculo de potencias y cubo de números mediante expresiones matemáticas.", path: "ejercicios/expresiones/CuboNumeros.java" },
+      { title: "MatematicaBrillante.java", category: "expresiones", desc: "Evaluación de fórmulas y operaciones aritméticas complejas.", path: "ejercicios/expresiones/MatematicaBrillante.java" },
+
+      // Condicionales
+      { title: "NotaDefinitiva.java", category: "condicionales", desc: "Cálculo de calificaciones y determinación del estado de aprobación del estudiante.", path: "ejercicios/condicionales/NotaDefinitiva.java" },
+      { title: "DescuentoTienda.java", category: "condicionales", desc: "Cálculo de descuentos basados en el monto de compra y condiciones.", path: "ejercicios/condicionales/DescuentoTienda.java" },
+      { title: "ClasificacionNumero.java", category: "condicionales", desc: "Determina si un número es positivo, negativo, par o impar.", path: "ejercicios/condicionales/ClasificacionNumero.java" },
+      { title: "PasajeAvion.java", category: "condicionales", desc: "Tarifario y cobro de boletos con base en distancia y edad del pasajero.", path: "ejercicios/condicionales/PasajeAvion.java" },
+
+      // Ciclos
+      { title: "FactorialOcho.java", category: "ciclos", desc: "Cálculo iterativo del factorial utilizando bucles.", path: "ejercicios/ciclos/FactorialOcho.java" },
+      { title: "SumaCuadrados.java", category: "ciclos", desc: "Acumulación de la suma de los cuadrados de una serie de números.", path: "ejercicios/ciclos/SumaCuadrados.java" },
+      { title: "SerieFraccionaria.java", category: "ciclos", desc: "Generación y cálculo de sumatoria de series fraccionarias.", path: "ejercicios/ciclos/SerieFraccionaria.java" },
+      { title: "MultiplicacionImpares.java", category: "ciclos", desc: "Multiplicación acumulada de números impares dentro de un rango.", path: "ejercicios/ciclos/MultiplicacionImpares.java" },
+
+      // Métodos
+      { title: "OperacionesNumeros.java", category: "metodos", desc: "Modularización de operaciones matemáticas en métodos reutilizables.", path: "ejercicios/metodos/OperacionesNumeros.java" },
+      { title: "Reutilizacion.java", category: "metodos", desc: "Demostración de llamadas a funciones con parámetros y retorno.", path: "ejercicios/metodos/Reutilizacion.java" },
+
+      // Cadenas
+      { title: "EjerciciosStrings.java", category: "cadenas", desc: "Operaciones clásicas sobre String: manipulación, longitud y substrings.", path: "ejercicios/cadenas/EjerciciosStrings.java" },
+      { title: "TraductorEspanolBinario.java", category: "cadenas", desc: "Conversión de caracteres y cadenas a su representación binaria.", path: "ejercicios/cadenas/TraductorEspanolBinario.java" },
+      { title: "DisenoAscii.java", category: "cadenas", desc: "Generación de figuras y arte mediante cadenas formateadas.", path: "ejercicios/cadenas/DisenoAscii.java" },
+
+      // Retos
+      { title: "AnalizadorEmocional.java", category: "retos", desc: "Algoritmo de análisis de patrones y clasificación lógica de datos.", path: "ejercicios/retos/AnalizadorEmocional.java" },
+      { title: "AtletasDelFuturo.java", category: "retos", desc: "Gestión y cálculo de estadísticas para rendimiento deportivo.", path: "ejercicios/retos/AtletasDelFuturo.java" },
+      { title: "EDEQFinanzas.java", category: "retos", desc: "Simulación de estados financieros y cálculos tarifarios complejos.", path: "ejercicios/retos/EDEQFinanzas.java" }
+    ];
+
+    let currentCategory = "todos";
+    let searchQuery = "";
+
+    const exerciseGrid = document.getElementById("exerciseGrid");
+    const searchInput = document.getElementById("searchInput");
+    const categoryFilters = document.getElementById("categoryFilters");
+    const themeToggle = document.getElementById("themeToggle");
+
+    function renderExercises() {
+      exerciseGrid.innerHTML = "";
+      const filtered = exercises.filter(item => {
+        const matchesCategory = currentCategory === "todos" || item.category === currentCategory;
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery) ||
+                              item.desc.toLowerCase().includes(searchQuery);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        exerciseGrid.innerHTML = `
+          <div class="empty-state">
+            <p>No se encontraron ejercicios que coincidan con la búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(ex => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div>
+            <div class="card-header">
+              <h2 class="card-title">${ex.title}</h2>
+              <span class="badge badge-${ex.category}">${ex.category}</span>
+            </div>
+            <p class="card-body">${ex.desc}</p>
+          </div>
+          <div class="card-footer">
+            <span class="file-path">${ex.path}</span>
+          </div>
+        `;
+        exerciseGrid.appendChild(card);
+      });
+    }
+
+    // Filter by Category
+    categoryFilters.addEventListener("click", (e) => {
+      if (e.target.classList.contains("filter-btn")) {
+        document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+        e.target.classList.add("active");
+        currentCategory = e.target.dataset.category;
+        renderExercises();
+      }
+    });
+
+    // Search filter
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      renderExercises();
+    });
+
+    // Theme Toggle
+    themeToggle.addEventListener("click", () => {
+      const isLight = document.body.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.body.removeAttribute("data-theme");
+        themeToggle.textContent = "☀️ Modo Claro";
+      } else {
+        document.body.setAttribute("data-theme", "light");
+        themeToggle.textContent = "🌙 Modo Oscuro";
+      }
+    });
+
+    // Initial Render
+    renderExercises();
+  </script>
+</body>
+</html>
