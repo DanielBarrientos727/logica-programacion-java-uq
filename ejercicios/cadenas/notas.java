@@ -300,4 +300,7 @@ public class notas {
         System.out.println("\n" + informe);
 
     }
+
+    public static class Ejercicioswitch {
+    }
 }

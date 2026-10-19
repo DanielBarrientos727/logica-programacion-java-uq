@@ -1,417 +1,285 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="mocha">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lógica de Programación en Java - UQ</title>
+  <title>Java UQ — Lógica de Programación</title>
   <style>
     :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --card-hover: #334155;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --primary: #38bdf8;
-      --primary-hover: #0284c7;
-      --accent: #f59e0b;
-      --border-color: #334155;
-      --badge-fundamentos: #3b82f6;
-      --badge-operadores: #10b981;
-      --badge-expresiones: #8b5cf6;
-      --badge-condicionales: #f59e0b;
-      --badge-ciclos: #ec4899;
-      --badge-metodos: #06b6d4;
-      --badge-cadenas: #14b8a6;
-      --badge-retos: #ef4444;
-      --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --bg: #1e1e2e;
+      --panel: #181825;
+      --surface: #313244;
+      --hover: #45475a;
+      --border: #313244;
+      --text: #cdd6f4;
+      --muted: #a6adc8;
+      --blue: #89b4fa;
+      --blue-bg: #313f5a;
+      --green: #a6e3a1;
+      --wallpaper-shade: rgba(24, 24, 37, .48);
+      --glass: rgba(24, 24, 37, .80);
     }
-
-    [data-theme="light"] {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --card-hover: #f1f5f9;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --primary: #0284c7;
-      --primary-hover: #0369a1;
-      --accent: #d97706;
-      --border-color: #e2e8f0;
+    [data-theme="latte"] {
+      --bg: #eff1f5;
+      --panel: #e6e9ef;
+      --surface: #dce0e8;
+      --hover: #ccd0da;
+      --border: #ccd0da;
+      --text: #4c4f69;
+      --muted: #6c6f85;
+      --blue: #1e66f5;
+      --blue-bg: #dce8ff;
+      --green: #40a02b;
+      --wallpaper-shade: rgba(239, 241, 245, .43);
+      --glass: rgba(255, 255, 255, .82);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, sans-serif; }
+    button, input { font: inherit; }
+    button { cursor: pointer; color: inherit; }
+    button:focus-visible, input:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .app { display: grid; grid-template-columns: 220px 320px minmax(0, 1fr); height: 100vh; }
+    .sidebar, .list-panel, .details { min-width: 0; overflow: auto; }
+    .sidebar { background: var(--panel); padding: 18px 12px; border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+    .brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 22px; }
+    .logo { display: block; flex: 0 0 auto; width: 42px; height: 42px; padding: 3px; object-fit: contain; border-radius: 50%; border: 1px solid var(--border); background: #fff; }
+    .brand strong { display: block; font-size: 15px; }
+    .photo-credit { display: inline-block; margin-top: 2px; color: var(--muted); font-size: 10px; text-decoration: none; }
+    .photo-credit:hover { color: var(--blue); text-decoration: underline; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; }
+    .section-label { color: var(--muted); padding: 8px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .categories { display: grid; gap: 3px; }
+    .category { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 10px; border: 0; border-radius: 8px; background: transparent; text-align: left; color: var(--muted); }
+    .category:hover, .exercise:hover { background: var(--surface); }
+    .category.active { background: var(--blue-bg); color: var(--blue); }
+    .category span:first-child { width: 18px; text-align: center; }
+    .count { margin-left: auto; font-size: 11px; }
+    .sidebar-bottom { margin-top: auto; padding: 16px 4px 0; }
+    .plain-button { border: 1px solid var(--border); background: var(--surface); border-radius: 7px; padding: 7px 10px; }
+    .plain-button:hover { background: var(--hover); }
+    .list-panel { background: #11111b; border-right: 1px solid var(--border); }
+    [data-theme="latte"] .list-panel { background: #fff; }
+    .list-head { padding: 18px 15px 12px; border-bottom: 1px solid var(--border); }
+    .list-title-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .list-title { font-size: 16px; font-weight: 750; }
+    .search { width: 100%; padding: 10px 12px; border: 1px solid transparent; border-radius: 8px; background: var(--surface); color: var(--text); }
+    .search:focus { outline: none; border-color: var(--blue); }
+    .exercise-list { padding: 6px; }
+    .exercise { display: block; width: 100%; padding: 11px 10px; margin-bottom: 2px; border: 0; border-radius: 8px; background: transparent; text-align: left; }
+    .exercise.active { background: var(--blue-bg); }
+    .exercise.active strong { color: var(--blue); }
+    .exercise strong { display: block; overflow-wrap: anywhere; font-size: 13px; }
+    .exercise .desc { display: -webkit-box; overflow: hidden; margin-top: 4px; color: var(--muted); font-size: 12px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .details {
       padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-family);
-      line-height: 1.6;
-      padding: 2rem 1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 2.5rem;
       position: relative;
+      background-color: var(--bg);
+      background-image: linear-gradient(var(--wallpaper-shade), var(--wallpaper-shade)), url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Lake_near_Sunnig_Grat_summit.JPG/1280px-Lake_near_Sunnig_Grat_summit.JPG");
+      background-position: center;
+      background-size: cover;
+      background-attachment: local;
     }
-
-    header h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
+    .details-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 22px; border-bottom: 1px solid var(--border); background: var(--panel); }
+    .content {
+      max-width: 760px;
+      margin: 30px auto;
+      padding: 30px 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-
-    header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
+    .eyebrow { margin-bottom: 8px; color: var(--blue); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(22px, 3vw, 30px); line-height: 1.2; overflow-wrap: anywhere; }
+    .description { margin: 12px 0 24px; color: var(--muted); font-size: 15px; }
+    .path-label { margin-bottom: 8px; font-size: 13px; font-weight: 700; }
+    .path-box { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; }
+    code { color: var(--green); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; overflow-wrap: anywhere; }
+    .welcome { display: grid; place-items: center; min-height: calc(100vh - 60px); padding: 25px; text-align: center; }
+    .welcome-icon { display: grid; place-items: center; width: 72px; height: 72px; margin: 0 auto 18px; padding: 5px; overflow: hidden; border: 1px solid var(--border); border-radius: 22px; background: #fff; }
+    .welcome-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .welcome > div { max-width: 430px; padding: 28px; border: 1px solid var(--border); border-radius: 18px; background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .wallpaper-credit { position: absolute; right: 10px; bottom: 8px; z-index: 2; max-width: calc(100% - 20px); padding: 3px 7px; border-radius: 5px; color: var(--text); background: var(--glass); font-size: 10px; text-decoration: none; backdrop-filter: blur(8px); }
+    .wallpaper-credit:hover { color: var(--blue); }
+    .welcome h1 { font-size: 24px; margin-bottom: 10px; }
+    .welcome p { max-width: 330px; color: var(--muted); }
+    .empty { padding: 24px 12px; text-align: center; color: var(--muted); }
+    @media (max-width: 850px) {
+      .app { grid-template-columns: 190px minmax(240px, 300px) minmax(0, 1fr); }
+      .content { margin: 18px 12px; padding: 24px 18px; }
     }
-
-    .theme-toggle {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
+    @media (max-width: 650px) {
+      .app { display: block; height: 100dvh; }
+      .sidebar { display: none; }
+      .list-panel, .details { height: 100%; }
+      .details { display: none; }
+      .app.show-details .list-panel { display: none; }
+      .app.show-details .details { display: block; }
+      .details-head { padding: 10px 12px; }
+      .content { margin: 18px 12px; padding: 24px 18px; }
+      .welcome { min-height: calc(100dvh - 55px); }
+      .mobile-back { display: inline-block !important; }
     }
-
-    .theme-toggle:hover {
-      border-color: var(--primary);
-    }
-
-    .controls {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .controls {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
-    .search-box {
-      position: relative;
-      flex: 1;
-      max-width: 400px;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 0.75rem 1rem 0.75rem 2.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-main);
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-
-    .search-box input:focus {
-      border-color: var(--primary);
-    }
-
-    .search-box svg {
-      position: absolute;
-      left: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      fill: var(--text-muted);
-      width: 18px;
-      height: 18px;
-    }
-
-    .category-filters {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding-bottom: 0.5rem;
-    }
-
-    .filter-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      white-space: nowrap;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    .exercise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      border-color: var(--primary);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
-    }
-
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      word-break: break-word;
-    }
-
-    .badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 12px;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-fundamentos { background-color: var(--badge-fundamentos); }
-    .badge-operadores { background-color: var(--badge-operadores); }
-    .badge-expresiones { background-color: var(--badge-expresiones); }
-    .badge-condicionales { background-color: var(--badge-condicionales); }
-    .badge-ciclos { background-color: var(--badge-ciclos); }
-    .badge-metodos { background-color: var(--badge-metodos); }
-    .badge-cadenas { background-color: var(--badge-cadenas); }
-    .badge-retos { background-color: var(--badge-retos); }
-
-    .card-body {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 0.75rem;
-    }
-
-    .file-path {
-      font-family: monospace;
-      color: var(--primary);
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 3rem;
-      color: var(--text-muted);
-      grid-column: 1 / -1;
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.5rem;
-    }
+    .mobile-back { display: none; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <button class="theme-toggle" id="themeToggle">☀️ Modo Claro</button>
-      <h1>Lógica de Programación en Java</h1>
-      <p>Universidad del Quindío · Ingeniería de Sistemas y Computación</p>
-    </header>
-
-    <div class="controls">
-      <div class="search-box">
-        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        <input type="text" id="searchInput" placeholder="Buscar ejercicios por nombre o descripción...">
-      </div>
-
-      <div class="category-filters" id="categoryFilters">
-        <button class="filter-btn active" data-category="todos">Todos</button>
-        <button class="filter-btn" data-category="fundamentos">Fundamentos</button>
-        <button class="filter-btn" data-category="operadores">Operadores</button>
-        <button class="filter-btn" data-category="expresiones">Expresiones</button>
-        <button class="filter-btn" data-category="condicionales">Condicionales</button>
-        <button class="filter-btn" data-category="ciclos">Ciclos</button>
-        <button class="filter-btn" data-category="metodos">Métodos</button>
-        <button class="filter-btn" data-category="cadenas">Cadenas</button>
-        <button class="filter-btn" data-category="retos">Retos</button>
-      </div>
+<div class="app" id="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png" alt="Taza de Java" title="Java Cup.png · Jaxom / Wikimedia Commons · CC BY-SA 1.0">
+      <div><strong>Java UQ</strong><div class="muted small">Lógica de Programación</div><a class="photo-credit" href="https://commons.wikimedia.org/wiki/File:Java_Cup.png" target="_blank" rel="noopener noreferrer">Foto: Jaxom / Wikimedia Commons</a></div>
     </div>
+    <div class="section-label">Categorías</div>
+    <nav class="categories" id="categories">
+      <button class="category active" data-category="todos"><span>▦</span>Todos <span class="count">24</span></button>
+      <button class="category" data-category="fundamentos"><span>◈</span>Fundamentos <span class="count">3</span></button>
+      <button class="category" data-category="operadores"><span>±</span>Operadores <span class="count">3</span></button>
+      <button class="category" data-category="expresiones"><span>ƒ</span>Expresiones <span class="count">2</span></button>
+      <button class="category" data-category="condicionales"><span>⑂</span>Condicionales <span class="count">4</span></button>
+      <button class="category" data-category="ciclos"><span>↻</span>Ciclos <span class="count">4</span></button>
+      <button class="category" data-category="metodos"><span>λ</span>Métodos <span class="count">2</span></button>
+      <button class="category" data-category="cadenas"><span>Aa</span>Cadenas <span class="count">3</span></button>
+      <button class="category" data-category="retos"><span>✳</span>Retos <span class="count">3</span></button>
+    </nav>
+    <div class="sidebar-bottom"><button class="plain-button" id="themeToggle">☼ Cambiar tema</button></div>
+  </aside>
 
-    <main class="exercise-grid" id="exerciseGrid"></main>
+  <section class="list-panel">
+    <header class="list-head">
+      <div class="list-title-row"><div class="list-title" id="listTitle">Todos los ejercicios</div><span class="muted small" id="resultCount">24</span></div>
+      <input class="search" id="search" type="search" placeholder="⌕  Buscar ejercicios..." aria-label="Buscar ejercicios">
+    </header>
+    <div class="exercise-list" id="exerciseList"></div>
+  </section>
 
-    <footer>
-      <p>Daniel Barrientos · Aprendizaje y Resolución de Problemas en Java</p>
-    </footer>
-  </div>
+  <main class="details" id="details">
+    <header class="details-head">
+      <div><strong>Detalles</strong><div class="muted small">Lógica de Programación · UQ</div></div>
+      <button class="plain-button mobile-back" id="backButton">← Volver</button>
+    </header>
+    <div id="detailContent" class="welcome"><div><div class="welcome-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png" alt="Taza de Java"></div><h1>Tu biblioteca de Java</h1><p>Selecciona un ejercicio para ver su descripción y la ruta del archivo.</p></div></div>
+    <a class="wallpaper-credit" href="https://commons.wikimedia.org/wiki/File:Lake_near_Sunnig_Grat_summit.JPG" target="_blank" rel="noopener noreferrer">Paisaje: Simon Koopmann / Wikimedia Commons · CC BY-SA</a>
+  </main>
+</div>
 
-  <script>
-    const exercises = [
-      // Fundamentos
-      { title: "TipoDato.java", category: "fundamentos", desc: "Uso y declaración de los diferentes tipos de datos primitivos en Java.", path: "ejercicios/fundamentos/TipoDato.java" },
-      { title: "VariablesyConstantes.java", category: "fundamentos", desc: "Definición y diferencia entre variables modificables y constantes con final.", path: "ejercicios/fundamentos/VariablesyConstantes.java" },
-      { title: "EjercicioNovato.java", category: "fundamentos", desc: "Prácticas iniciales de sintaxis e impresión en consola.", path: "ejercicios/fundamentos/EjercicioNovato.java" },
-      
-      // Operadores
-      { title: "Operadores.java", category: "operadores", desc: "Operaciones aritméticas, lógicas y relacionales básicas.", path: "ejercicios/operadores/Operadores.java" },
-      { title: "PracticaOperadores.java", category: "operadores", desc: "Ejercicios combinados de asignación y operadores de incremento/decremento.", path: "ejercicios/operadores/PracticaOperadores.java" },
-      { title: "AnalizadorAbecedario.java", category: "operadores", desc: "Análisis y operaciones con caracteres de abecedario.", path: "ejercicios/operadores/AnalizadorAbecedario.java" },
+<script>
+  const exercises = [
+    { title: "TipoDato.java", category: "fundamentos", desc: "Uso y declaración de los diferentes tipos de datos primitivos en Java.", path: "ejercicios/fundamentos/TipoDato.java" },
+    { title: "VariablesyConstantes.java", category: "fundamentos", desc: "Diferencia entre variables modificables y constantes con final.", path: "ejercicios/fundamentos/VariablesyConstantes.java" },
+    { title: "EjercicioNovato.java", category: "fundamentos", desc: "Prácticas iniciales de sintaxis e impresión en consola.", path: "ejercicios/fundamentos/EjercicioNovato.java" },
+    { title: "Operadores.java", category: "operadores", desc: "Operaciones aritméticas, lógicas y relacionales básicas.", path: "ejercicios/operadores/Operadores.java" },
+    { title: "PracticaOperadores.java", category: "operadores", desc: "Ejercicios de asignación e incremento y decremento.", path: "ejercicios/operadores/PracticaOperadores.java" },
+    { title: "AnalizadorAbecedario.java", category: "operadores", desc: "Análisis y operaciones con caracteres del abecedario.", path: "ejercicios/operadores/AnalizadorAbecedario.java" },
+    { title: "CuboNumeros.java", category: "expresiones", desc: "Cálculo de potencias y cubos mediante expresiones matemáticas.", path: "ejercicios/expresiones/CuboNumeros.java" },
+    { title: "MatematicaBrillante.java", category: "expresiones", desc: "Evaluación de fórmulas y operaciones aritméticas.", path: "ejercicios/expresiones/MatematicaBrillante.java" },
+    { title: "NotaDefinitiva.java", category: "condicionales", desc: "Cálculo de notas y estado de aprobación del estudiante.", path: "ejercicios/condicionales/NotaDefinitiva.java" },
+    { title: "DescuentoTienda.java", category: "condicionales", desc: "Cálculo de descuentos según el monto de compra.", path: "ejercicios/condicionales/DescuentoTienda.java" },
+    { title: "ClasificacionNumero.java", category: "condicionales", desc: "Determina si un número es positivo, negativo, par o impar.", path: "ejercicios/condicionales/ClasificacionNumero.java" },
+    { title: "PasajeAvion.java", category: "condicionales", desc: "Cobro de boletos según distancia y edad del pasajero.", path: "ejercicios/condicionales/PasajeAvion.java" },
+    { title: "FactorialOcho.java", category: "ciclos", desc: "Cálculo iterativo del factorial usando bucles.", path: "ejercicios/ciclos/FactorialOcho.java" },
+    { title: "SumaCuadrados.java", category: "ciclos", desc: "Suma de los cuadrados de una serie de números.", path: "ejercicios/ciclos/SumaCuadrados.java" },
+    { title: "SerieFraccionaria.java", category: "ciclos", desc: "Generación y cálculo de una serie fraccionaria.", path: "ejercicios/ciclos/SerieFraccionaria.java" },
+    { title: "MultiplicacionImpares.java", category: "ciclos", desc: "Multiplicación acumulada de números impares en un rango.", path: "ejercicios/ciclos/MultiplicacionImpares.java" },
+    { title: "OperacionesNumeros.java", category: "metodos", desc: "Operaciones matemáticas organizadas en métodos reutilizables.", path: "ejercicios/metodos/OperacionesNumeros.java" },
+    { title: "Reutilizacion.java", category: "metodos", desc: "Llamadas a métodos con parámetros y valores de retorno.", path: "ejercicios/metodos/Reutilizacion.java" },
+    { title: "EjerciciosStrings.java", category: "cadenas", desc: "Operaciones con String: manipulación, longitud y caracteres.", path: "ejercicios/cadenas/EjerciciosStrings.java" },
+    { title: "TraductorEspanolBinario.java", category: "cadenas", desc: "Conversión de texto a su representación binaria.", path: "ejercicios/cadenas/TraductorEspanolBinario.java" },
+    { title: "DisenoAscii.java", category: "cadenas", desc: "Generación de figuras y arte ASCII desde Java.", path: "ejercicios/cadenas/DisenoAscii.java" },
+    { title: "AnalizadorEmocional.java", category: "retos", desc: "Ejercicio de análisis de patrones y clasificación lógica.", path: "ejercicios/retos/AnalizadorEmocional.java" },
+    { title: "AtletasDelFuturo.java", category: "retos", desc: "Cálculo de estadísticas de rendimiento deportivo.", path: "ejercicios/retos/AtletasDelFuturo.java" },
+    { title: "EDEQFinanzas.java", category: "retos", desc: "Simulación de estados financieros y cálculos tarifarios.", path: "ejercicios/retos/EDEQFinanzas.java" }
+  ];
 
-      // Expresiones
-      { title: "CuboNumeros.java", category: "expresiones", desc: "Cálculo de potencias y cubo de números mediante expresiones matemáticas.", path: "ejercicios/expresiones/CuboNumeros.java" },
-      { title: "MatematicaBrillante.java", category: "expresiones", desc: "Evaluación de fórmulas y operaciones aritméticas complejas.", path: "ejercicios/expresiones/MatematicaBrillante.java" },
+  const names = { todos: "Todos los ejercicios", fundamentos: "Fundamentos", operadores: "Operadores", expresiones: "Expresiones", condicionales: "Condicionales", ciclos: "Ciclos", metodos: "Métodos", cadenas: "Cadenas", retos: "Retos" };
+  const app = document.getElementById("app");
+  const list = document.getElementById("exerciseList");
+  const search = document.getElementById("search");
+  const detailContent = document.getElementById("detailContent");
+  let category = "todos";
+  let query = "";
+  let selected = "";
 
-      // Condicionales
-      { title: "NotaDefinitiva.java", category: "condicionales", desc: "Cálculo de calificaciones y determinación del estado de aprobación del estudiante.", path: "ejercicios/condicionales/NotaDefinitiva.java" },
-      { title: "DescuentoTienda.java", category: "condicionales", desc: "Cálculo de descuentos basados en el monto de compra y condiciones.", path: "ejercicios/condicionales/DescuentoTienda.java" },
-      { title: "ClasificacionNumero.java", category: "condicionales", desc: "Determina si un número es positivo, negativo, par o impar.", path: "ejercicios/condicionales/ClasificacionNumero.java" },
-      { title: "PasajeAvion.java", category: "condicionales", desc: "Tarifario y cobro de boletos con base en distancia y edad del pasajero.", path: "ejercicios/condicionales/PasajeAvion.java" },
+  function filteredExercises() {
+    return exercises.filter(ex => (category === "todos" || ex.category === category) && `${ex.title} ${ex.desc} ${ex.path}`.toLocaleLowerCase("es").includes(query));
+  }
 
-      // Ciclos
-      { title: "FactorialOcho.java", category: "ciclos", desc: "Cálculo iterativo del factorial utilizando bucles.", path: "ejercicios/ciclos/FactorialOcho.java" },
-      { title: "SumaCuadrados.java", category: "ciclos", desc: "Acumulación de la suma de los cuadrados de una serie de números.", path: "ejercicios/ciclos/SumaCuadrados.java" },
-      { title: "SerieFraccionaria.java", category: "ciclos", desc: "Generación y cálculo de sumatoria de series fraccionarias.", path: "ejercicios/ciclos/SerieFraccionaria.java" },
-      { title: "MultiplicacionImpares.java", category: "ciclos", desc: "Multiplicación acumulada de números impares dentro de un rango.", path: "ejercicios/ciclos/MultiplicacionImpares.java" },
-
-      // Métodos
-      { title: "OperacionesNumeros.java", category: "metodos", desc: "Modularización de operaciones matemáticas en métodos reutilizables.", path: "ejercicios/metodos/OperacionesNumeros.java" },
-      { title: "Reutilizacion.java", category: "metodos", desc: "Demostración de llamadas a funciones con parámetros y retorno.", path: "ejercicios/metodos/Reutilizacion.java" },
-
-      // Cadenas
-      { title: "EjerciciosStrings.java", category: "cadenas", desc: "Operaciones clásicas sobre String: manipulación, longitud y substrings.", path: "ejercicios/cadenas/EjerciciosStrings.java" },
-      { title: "TraductorEspanolBinario.java", category: "cadenas", desc: "Conversión de caracteres y cadenas a su representación binaria.", path: "ejercicios/cadenas/TraductorEspanolBinario.java" },
-      { title: "DisenoAscii.java", category: "cadenas", desc: "Generación de figuras y arte mediante cadenas formateadas.", path: "ejercicios/cadenas/DisenoAscii.java" },
-
-      // Retos
-      { title: "AnalizadorEmocional.java", category: "retos", desc: "Algoritmo de análisis de patrones y clasificación lógica de datos.", path: "ejercicios/retos/AnalizadorEmocional.java" },
-      { title: "AtletasDelFuturo.java", category: "retos", desc: "Gestión y cálculo de estadísticas para rendimiento deportivo.", path: "ejercicios/retos/AtletasDelFuturo.java" },
-      { title: "EDEQFinanzas.java", category: "retos", desc: "Simulación de estados financieros y cálculos tarifarios complejos.", path: "ejercicios/retos/EDEQFinanzas.java" }
-    ];
-
-    let currentCategory = "todos";
-    let searchQuery = "";
-
-    const exerciseGrid = document.getElementById("exerciseGrid");
-    const searchInput = document.getElementById("searchInput");
-    const categoryFilters = document.getElementById("categoryFilters");
-    const themeToggle = document.getElementById("themeToggle");
-
-    function renderExercises() {
-      exerciseGrid.innerHTML = "";
-      const filtered = exercises.filter(item => {
-        const matchesCategory = currentCategory === "todos" || item.category === currentCategory;
-        const matchesSearch = item.title.toLowerCase().includes(searchQuery) ||
-                              item.desc.toLowerCase().includes(searchQuery);
-        return matchesCategory && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        exerciseGrid.innerHTML = `
-          <div class="empty-state">
-            <p>No se encontraron ejercicios que coincidan con la búsqueda.</p>
-          </div>
-        `;
-        return;
-      }
-
-      filtered.forEach(ex => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div>
-            <div class="card-header">
-              <h2 class="card-title">${ex.title}</h2>
-              <span class="badge badge-${ex.category}">${ex.category}</span>
-            </div>
-            <p class="card-body">${ex.desc}</p>
-          </div>
-          <div class="card-footer">
-            <span class="file-path">${ex.path}</span>
-          </div>
-        `;
-        exerciseGrid.appendChild(card);
-      });
+  function render() {
+    document.getElementById("listTitle").textContent = names[category];
+    const results = filteredExercises();
+    document.getElementById("resultCount").textContent = results.length;
+    list.replaceChildren();
+    if (!results.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "No se encontraron ejercicios.";
+      list.appendChild(empty);
+      return;
     }
-
-    // Filter by Category
-    categoryFilters.addEventListener("click", (e) => {
-      if (e.target.classList.contains("filter-btn")) {
-        document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
-        e.target.classList.add("active");
-        currentCategory = e.target.dataset.category;
-        renderExercises();
-      }
+    results.forEach(ex => {
+      const button = document.createElement("button");
+      button.className = "exercise" + (selected === ex.path ? " active" : "");
+      button.type = "button";
+      const title = document.createElement("strong");
+      title.textContent = ex.title;
+      const desc = document.createElement("span");
+      desc.className = "desc";
+      desc.textContent = ex.desc;
+      button.append(title, desc);
+      button.addEventListener("click", () => showDetails(ex));
+      list.appendChild(button);
     });
+  }
 
-    // Search filter
-    searchInput.addEventListener("input", (e) => {
-      searchQuery = e.target.value.toLowerCase().trim();
-      renderExercises();
+  function showDetails(ex) {
+    selected = ex.path;
+    render();
+    detailContent.className = "content";
+    detailContent.replaceChildren();
+    const eyebrow = document.createElement("div");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = names[ex.category];
+    const title = document.createElement("h1");
+    title.textContent = ex.title;
+    const desc = document.createElement("p");
+    desc.className = "description";
+    desc.textContent = ex.desc;
+    const label = document.createElement("div");
+    label.className = "path-label";
+    label.textContent = "Ruta del archivo";
+    const pathBox = document.createElement("div");
+    pathBox.className = "path-box";
+    const path = document.createElement("code");
+    path.textContent = ex.path;
+    const copy = document.createElement("button");
+    copy.className = "plain-button";
+    copy.textContent = "Copiar";
+    copy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(ex.path); copy.textContent = "Copiado ✓"; }
+      catch { copy.textContent = "No disponible"; }
+      setTimeout(() => copy.textContent = "Copiar", 1200);
     });
+    pathBox.append(path, copy);
+    detailContent.append(eyebrow, title, desc, label, pathBox);
+    if (matchMedia("(max-width: 650px)").matches) app.classList.add("show-details");
+  }
 
-    // Theme Toggle
-    themeToggle.addEventListener("click", () => {
-      const isLight = document.body.getAttribute("data-theme") === "light";
-      if (isLight) {
-        document.body.removeAttribute("data-theme");
-        themeToggle.textContent = "☀️ Modo Claro";
-      } else {
-        document.body.setAttribute("data-theme", "light");
-        themeToggle.textContent = "🌙 Modo Oscuro";
-      }
-    });
-
-    // Initial Render
-    renderExercises();
-  </script>
+  document.getElementById("categories").addEventListener("click", event => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    category = button.dataset.category;
+    document.querySelectorAll(".category").forEach(item => item.classList.toggle("active", item === button));
+    render();
+  });
+  search.addEventListener("input", () => { query = search.value.trim().toLocaleLowerCase("es"); render(); });
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    const root = document.documentElement;
+    root.dataset.theme = root.dataset.theme === "mocha" ? "latte" : "mocha";
+  });
+  document.getElementById("backButton").addEventListener("click", () => app.classList.remove("show-details"));
+  render();
+</script>
 </body>
 </html>
