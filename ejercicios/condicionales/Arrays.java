@@ -1,4 +1,4 @@
-public class EscructuraDatos {
+public class Arrays {
     public static void main(String[] args) {
 
         // Los arreglos (arrays) permiten almacenar varios valores del mismo tipo.
