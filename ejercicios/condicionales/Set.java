@@ -152,5 +152,98 @@ public class Set {
 
         // Mostrar el resultado de la intersección de ambos conjuntos
         System.out.println(names);
+
+
+        // =========================================================
+        // EXPLORACIÓN DE MÉTODOS DE HASHSET
+        // Escribe names. o numbers. en el IDE para ver el autocompletado.
+        // =========================================================
+
+        // 1. add(element): agrega un elemento si no existe.
+        names.add("Prueba");
+
+        // 2. addAll(collection): agrega todos los elementos de otra colección.
+        names.addAll(paises);
+
+        // 3. contains(element): comprueba si existe un elemento.
+        names.contains("Daniel");
+
+        // 4. containsAll(collection): comprueba si contiene todos los elementos.
+        names.containsAll(paises);
+
+        // 5. remove(element): elimina un elemento específico.
+        names.remove("Prueba");
+
+        // 6. removeAll(collection): elimina los elementos compartidos.
+        // names.removeAll(paises);
+
+        // 7. retainAll(collection): conserva solamente los elementos compartidos.
+        // names.retainAll(paises);
+
+        // 8. removeIf(predicate): elimina elementos que cumplen una condición.
+        names.removeIf(nombre -> nombre.startsWith("X"));
+
+        // 9. size(): devuelve la cantidad de elementos.
+        System.out.println(names.size());
+
+        // 10. isEmpty(): comprueba si el conjunto está vacío.
+        System.out.println(names.isEmpty());
+
+        // 11. clear(): elimina todos los elementos.
+        // names.clear();
+
+        // 12. iterator(): permite recorrer los elementos.
+        var iterator = names.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        // 13. forEach(action): ejecuta una acción por cada elemento.
+        names.forEach(System.out::println);
+
+        // 14. toArray(): convierte el conjunto en un arreglo.
+        Object[] array = names.toArray();
+        System.out.println(array.length);
+
+        // 15. toArray(generator): crea un arreglo del tipo indicado.
+        String[] nameArray = names.toArray(new String[0]);
+        System.out.println(nameArray.length);
+
+        // 16. stream(): permite procesar los elementos mediante streams.
+        long cantidad = names.stream().count();
+        System.out.println(cantidad);
+
+        // 17. parallelStream(): permite procesar elementos en paralelo.
+        names.parallelStream().forEach(System.out::println);
+
+        // 18. spliterator(): proporciona un iterador divisible.
+        var spliterator = names.spliterator();
+        System.out.println(spliterator.estimateSize());
+
+        // 19. hashCode(): devuelve el código hash del conjunto.
+        System.out.println(names.hashCode());
+
+        // 20. equals(object): compara el contenido con otro conjunto.
+        System.out.println(names.equals(paises));
+
+        // 21. getClass(): devuelve la clase real del objeto.
+        System.out.println(names.getClass());
+
+        // 22. toString(): representa el conjunto como texto.
+        System.out.println(names.toString());
+
+        // 23. clone(): NO está disponible públicamente en HashSet.
+        // Para copiarlo, puedes crear otro conjunto:
+        HashSet<String> copia = new HashSet<>(names);
+
+        // 24. removeAll y retainAll modifican el conjunto original.
+        // Úsalos con cuidado si necesitas conservar los datos.
+
+        // 25. Comparar tamaños y comprobar si la copia es equivalente.
+        System.out.println("Original: " + names.size());
+        System.out.println("Copia: " + copia.size());
+        System.out.println("¿Son iguales? " + names.equals(copia));
+
     }
 }
