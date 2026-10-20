@@ -6,60 +6,67 @@ public class Set {
 
         // Declaración y creación de un HashSet
         HashSet<String> names = new HashSet<>();
-        // Usando inferencia de tipos con var
+
+        // Uso de var para inferir el tipo de la variable
         var numbers = new HashSet<Integer>();
 
-        //Tamaño
-
+        // Consultar el tamaño inicial del conjunto
         System.out.println(names.size());
 
-        // Agregar elementos
+        // Agregar elementos al conjunto
         names.add("Daniel");
         names.add("Alejandro");
-        names.add("Daniel"); // No se duplica
-        names.add("DanielAlejandroBarrientos7272@gmail.com"); // el SET es desordenado
-        //No se usa SET para guardar datos de forma ordenada
+        names.add("Daniel"); // No admite elementos duplicados
+        names.add("DanielAlejandroBarrientos7272@gmail.com");
 
-        //no se sabe donde se guardo, pa quew lo vas a modificar
+        // HashSet no garantiza el orden de los elementos
+        // No es la estructura adecuada si necesitamos mantener un orden específico
 
-        //Nuevo tamaño
+        // Consultar el tamaño después de agregar los elementos
         System.out.println(names.size());
 
-        //Lo mismo a numeros
-
+        // Agregar elementos numéricos al conjunto
         numbers.add(10);
         numbers.add(20);
-        numbers.add(10); // No se duplica
+        numbers.add(10); // El número 10 solo se almacena una vez
 
-        //tamaño numero
+        // Consultar el tamaño del conjunto numérico
         System.out.println(numbers.size());
 
-        // Mostrar los elementos
+        // Mostrar los elementos de ambos conjuntos
         System.out.println("Nombres: " + names);
         System.out.println("Números: " + numbers);
 
-        names.remove("Daniel"); // es lo mas rapido pues y sera 3 el size
+        // Eliminar un elemento del conjunto
+        names.remove("Daniel");
         System.out.println(names.size());
 
         /*
-        System.out.println(names.get(0));       // Obtiene el índice 0.
-        System.out.println(names.getFirst());   // Primer elemento.
-        System.out.println(names.getLast());    // Último elemento.
-        System.out.println(names.get(1));       // Elemento del índice 1.
-        NO FUNCIONAN DIFERENTE ENTRE ArrayLisy y Set
+         * HashSet no permite acceder a los elementos mediante índices.
+         * Métodos como get(0), get(1), getFirst() y getLast()
+         * no están disponibles en HashSet.
+         * ArrayList sí permite acceder a los elementos mediante índices.
          */
 
-        System.out.println(names.contains("Daniel")); //falso
-        System.out.println(names.contains("Alejandro")); //verdad
+        // Comprobar si un elemento existe en el conjunto
+        System.out.println(names.contains("Daniel"));    // false
+        System.out.println(names.contains("Alejandro")); // true
 
-        //para esto es mas rapido, LOS SET son mas rapido, los arrays son mas lento porque va de forma ordenana
+        // HashSet suele ofrecer búsquedas, inserciones y eliminaciones
+        // en tiempo promedio O(1), aunque depende de las condiciones.
+        // ArrayList permite acceso por índice en tiempo O(1),
+        // pero buscar un elemento por su valor suele requerir O(n).
 
-       names.size();
+        // Consultar el tamaño actual del conjunto
+        names.size();
 
-       //Pa rapidez set y pa trabajar ordenadamente arrays
-
+        // Usar HashSet cuando necesitamos elementos únicos.
+        // Usar ArrayList cuando necesitamos conservar el orden de inserción
+        // y permitir elementos duplicados.
 
         System.out.println(names);
+
+        // Intentar agregar el mismo elemento varias veces
         names.add("Daniel");
         names.add("Daniel");
         names.add("Daniel");
@@ -108,9 +115,42 @@ public class Set {
         names.add("Daniel");
         names.add("Daniel");
         names.add("Daniel");
-        names.add("Daniel"); //No permite el set redundancias
+        names.add("Daniel"); // Los elementos duplicados no se agregan.
+
+        // HashSet utiliza hashCode() y equals() para determinar
+        // si dos elementos son iguales.
+
         System.out.println(names);
 
+        // Agregar elementos al conjunto numérico
+        numbers.add(1);
+        numbers.add(2);
 
+        // No podemos agregar directamente numbers a names mediante addAll(),
+        // porque names almacena String y numbers almacena Integer.
+
+        // Crear un conjunto de países
+        var paises = new HashSet<String>();
+        paises.add("Mexico");
+        paises.add("Venezuela");
+        paises.add("Cuba");
+        paises.add("Daniel");
+
+        // Agregar a names todos los elementos de paises
+        names.addAll(paises);
+
+        // Mostrar el conjunto names después de combinar ambos conjuntos
+        System.out.println(names);
+
+        // removeAll(paises) eliminaría de names todos los elementos
+        // que también estén presentes en paises.
+        // names.removeAll(paises);
+
+        // retainAll(paises) conserva únicamente los elementos de names
+        // que también estén presentes en paises.
+        names.retainAll(paises);
+
+        // Mostrar el resultado de la intersección de ambos conjuntos
+        System.out.println(names);
     }
 }
