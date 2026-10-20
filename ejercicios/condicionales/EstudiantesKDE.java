@@ -10,6 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+//EJEMPLO HECHO CON CLAUDE SONNET 5.5.
 public class EstudiantesKDE extends JFrame {
 
     private final ArrayList<Estudiante> estudiantes = new ArrayList<>();

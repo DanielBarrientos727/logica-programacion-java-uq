@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+//EJEMPLO HECHO CON CLAUDE SONNET 5.5.
+
 public class PelotaAnimada extends JPanel {
 
     private static final int TOTAL_PELOTAS = 10;
