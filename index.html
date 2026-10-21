@@ -1,118 +1,246 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="mocha">
 <head>
-  <!-- Codificación y adaptación a dispositivos -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Codificación y adaptación a diferentes dispositivos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Información del sitio -->
-  <meta
-    name="description"
-    content="Java UQ: biblioteca personal de estudio sobre Java y Lógica de Programación para la Universidad del Quindío."
-  >
-  <meta name="theme-color" content="#1e1e2e">
-  <meta name="author" content="Daniel Barrientos">
+    <!-- Información general del sitio -->
+    <meta
+        name="description"
+        content="Java UQ: biblioteca personal de apuntes, teoría y ejercicios de Java y Lógica de Programación para la Universidad del Quindío."
+    >
 
-  <!-- Identidad de la página -->
-  <title>Java UQ — Lógica de Programación</title>
+    <meta name="author" content="Daniel Barrientos">
+    <meta name="theme-color" content="#1e1e2e">
 
-  <!-- Icono de la pestaña del navegador (favicon) -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
-  >
+    <!-- Evita ajustes automáticos de color inesperados del navegador -->
+    <meta name="color-scheme" content="dark light">
 
-  <!-- Icono para dispositivos Apple -->
-  <link
-    rel="apple-touch-icon"
-    href="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
-  >
+    <!-- Identidad de la página -->
+    <title>Java UQ | Lógica de Programación</title>
 
-  <!-- Hoja de estilos externa -->
-  <link rel="stylesheet" href="./CSS/style.css">
+    <!-- Icono de la pestaña del navegador -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
+    >
 
-  <!-- Lógica de la interfaz -->
-  <script src="./js/main.js" defer></script>
+    <!-- Icono para dispositivos Apple -->
+    <link
+        rel="apple-touch-icon"
+        href="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
+    >
+
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="./CSS/style.css">
+
+    <!-- Lógica e interactividad de la aplicación -->
+    <script src="./js/main.js" defer></script>
 </head>
+
 <body>
-  <div class="app" id="app">
-    <!-- Barra lateral: las categorías se generan desde CATEGORY_DATA. -->
-    <aside class="sidebar" aria-label="Navegación de la biblioteca">
-      <div class="brand">
-        <img
-          class="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
-          alt="Taza de Java"
-          title="Java Cup.png · Jaxom / Wikimedia Commons · CC BY-SA 1.0"
+    <!-- Permite acceder directamente al contenido principal -->
+    <a class="skip-link" href="#details">
+        Saltar al contenido de estudio
+    </a>
+
+    <!-- Contenedor principal de la aplicación -->
+    <div class="app" id="app">
+
+        <!--
+            BARRA LATERAL
+            Contiene la identidad de la aplicación,
+            las categorías de estudio y el selector de tema.
+        -->
+        <aside
+            class="sidebar"
+            aria-label="Navegación de la biblioteca"
         >
-        <div>
-          <strong>Java UQ</strong>
-          <div class="muted small">Lógica de Programación</div>
-          <a
-            class="photo-credit"
-            href="https://commons.wikimedia.org/wiki/File:Java_Cup.png"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Foto: Jaxom / Wikimedia Commons</a>
-        </div>
-      </div>
+            <!-- Identidad visual -->
+            <div class="brand">
+                <img
+                    class="logo"
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
+                    alt="Taza del logotipo de Java"
+                    title="Java Cup.png · Jaxom / Wikimedia Commons · CC BY-SA 1.0"
+                    decoding="async"
+                >
 
-      <div class="section-label">Categorías</div>
-      <nav class="categories" id="categories" aria-label="Temas de estudio"></nav>
+                <div>
+                    <h1 class="brand-title">
+                        <strong>Java UQ</strong>
+                    </h1>
 
-      <div class="sidebar-bottom">
-        <button class="plain-button" id="themeToggle" type="button" aria-label="Cambiar tema visual">
-          ☼ Cambiar tema
-        </button>
-      </div>
-    </aside>
+                    <p class="muted small">
+                        Lógica de Programación
+                    </p>
 
-    <!-- El listado se filtra por categoría y por el campo de búsqueda. -->
-    <section class="list-panel" aria-label="Listado de ejercicios">
-      <header class="list-head">
-        <div class="list-title-row">
-          <div class="list-title" id="listTitle">Todos los ejercicios</div>
-          <span class="muted small" id="resultCount" aria-live="polite">24</span>
-        </div>
-        <input
-          class="search"
-          id="search"
-          type="search"
-          placeholder="⌕ Buscar ejercicios..."
-          aria-label="Buscar ejercicios por nombre, tema o descripción"
+                    <a
+                        class="photo-credit"
+                        href="https://commons.wikimedia.org/wiki/File:Java_Cup.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Imagen: Jaxom / Wikimedia Commons
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categorías disponibles -->
+            <div class="section-label">
+                Categorías
+            </div>
+
+            <nav
+                class="categories"
+                id="categories"
+                aria-label="Temas de estudio"
+            >
+                <!-- Las categorías se generan desde main.js -->
+            </nav>
+
+            <!-- Acciones de la barra lateral -->
+            <div class="sidebar-bottom">
+                <button
+                    class="plain-button"
+                    id="themeToggle"
+                    type="button"
+                    aria-label="Cambiar tema visual"
+                    aria-controls="app"
+                >
+                    ☼ Cambiar tema
+                </button>
+            </div>
+        </aside>
+
+        <!--
+            PANEL DE EJERCICIOS
+            Permite buscar, filtrar y seleccionar
+            los ejercicios disponibles.
+        -->
+        <section
+            class="list-panel"
+            aria-labelledby="listTitle"
         >
-      </header>
-      <div class="exercise-list" id="exerciseList"></div>
-    </section>
+            <header class="list-head">
+                <!-- Título y cantidad de resultados -->
+                <div class="list-title-row">
+                    <h2 class="list-title" id="listTitle">
+                        Todos los ejercicios
+                    </h2>
 
-    <!-- El panel derecho presenta la portada, una guía temática o la ficha del archivo. -->
-    <main class="details" id="details" aria-label="Contenido de estudio">
-      <header class="details-head">
-        <div>
-          <strong>Detalles y guía de estudio</strong>
-          <div class="muted small">Lógica de Programación · UQ</div>
-        </div>
-        <button class="plain-button mobile-back" id="backButton" type="button">← Volver</button>
-      </header>
+                    <span
+                        class="muted small"
+                        id="resultCount"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    >
+                        24 resultados
+                    </span>
+                </div>
 
-      <div id="detailContent" class="welcome">
-        <div class="welcome-card">
-          <div class="welcome-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png" alt="Taza de Java">
-          </div>
-          <h1>Tu biblioteca de Java</h1>
-          <p>Selecciona una categoría para estudiar la teoría o abre un ejercicio para consultar su descripción y la ruta del archivo.</p>
-        </div>
-      </div>
+                <!-- Búsqueda de ejercicios -->
+                <input
+                    class="search"
+                    id="search"
+                    type="search"
+                    name="exercise-search"
+                    placeholder="Buscar ejercicios..."
+                    aria-label="Buscar ejercicios por nombre, tema o descripción"
+                    enterkeyhint="search"
+                    spellcheck="false"
+                    autocomplete="off"
+                >
+            </header>
 
-      <a
-        class="wallpaper-credit"
-        href="https://commons.wikimedia.org/wiki/File:Lake_near_Sunnig_Grat_summit.JPG"
-        target="_blank"
-        rel="noopener noreferrer"
-      >Paisaje: Simon Koopmann / Wikimedia Commons · CC BY-SA</a>
-    </main>
-  </div>
+            <!--
+                Los ejercicios se generan dinámicamente
+                desde main.js.
+            -->
+            <div
+                class="exercise-list"
+                id="exerciseList"
+                aria-label="Resultados de ejercicios"
+            >
+                <!-- El contenido se inserta desde JavaScript -->
+            </div>
+        </section>
+
+        <!--
+            PANEL PRINCIPAL
+            Presenta la portada, las guías temáticas
+            o los detalles del ejercicio seleccionado.
+        -->
+        <main
+            class="details"
+            id="details"
+            aria-label="Contenido de estudio"
+        >
+            <!-- Cabecera persistente del panel -->
+            <header class="details-head">
+                <div>
+                    <h2 class="details-title">
+                        Detalles y guía de estudio
+                    </h2>
+
+                    <p class="muted small">
+                        Lógica de Programación · Universidad del Quindío
+                    </p>
+                </div>
+
+                <!-- Se utiliza en la navegación móvil -->
+                <button
+                    class="plain-button mobile-back"
+                    id="backButton"
+                    type="button"
+                    aria-label="Volver al listado de ejercicios"
+                >
+                    ← Volver
+                </button>
+            </header>
+
+            <!--
+                Área dinámica de contenido.
+                JavaScript puede sustituir la portada por
+                una guía temática o la ficha de un ejercicio.
+            -->
+            <section
+                id="detailContent"
+                class="welcome"
+                aria-label="Presentación de la biblioteca"
+            >
+                <div class="welcome-card">
+                    <div class="welcome-icon">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Java_Cup.png"
+                            alt=""
+                            decoding="async"
+                        >
+                    </div>
+
+                    <h3>Tu biblioteca de Java</h3>
+
+                    <p>
+                        Selecciona una categoría para estudiar la teoría
+                        o abre un ejercicio para consultar su descripción
+                        y la ubicación de su archivo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Crédito de la imagen de fondo -->
+            <a
+                class="wallpaper-credit"
+                href="https://commons.wikimedia.org/wiki/File:Lake_near_Sunnig_Grat_summit.JPG"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Paisaje: Simon Koopmann / Wikimedia Commons · CC BY-SA
+            </a>
+        </main>
+
+    </div>
 </body>
 </html>

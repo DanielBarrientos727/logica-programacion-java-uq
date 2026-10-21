@@ -822,3 +822,28 @@ display: flex;
         transition-duration: 0.01ms !important;
       }
     }
+
+    /* Enlace de accesibilidad: visible al navegar con el teclado */
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 9999;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: #cba6f7;
+    color: #1e1e2e;
+    font-weight: 700;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Evita márgenes predeterminados en el título de la marca */
+.brand-title {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+}
