@@ -1487,27 +1487,55 @@
         note: "Curso en español de MoureDev. Este punto se sitúa cerca del bloque dedicado a la historia de Java; el índice del vídeo permite saltar a otros temas."
       });
       detailContent.append(video);
+const maintainer = createElement("section", "content-section");
 
-      const maintainer = createElement("section", "content-section");
-      maintainer.append(createElement("h2", "", "Sobre el sitio y su mantenedor"));
-      const profile = createElement("div", "profile-row");
-      profile.append(createElement("div", "profile-avatar", "DB"));
+maintainer.append(
+  createElement("h2", "", "Sobre el sitio y su mantenedor")
+);
 
-      const profileInfo = document.createElement("div");
-      profileInfo.append(
-        createElement("h3", "", "Daniel Barrientos"),
-        createElement("p", "", "Estudiante de Ingeniería de Sistemas y Computación en la Universidad del Quindío y de Análisis y Desarrollo de Software en el SENA."),
-        createElement("p", "muted small", "Este sitio es un proyecto académico personal creado para organizar ejercicios, apuntes y recursos de Lógica de Programación. No es una página oficial de la Universidad del Quindío ni sustituye las orientaciones del curso.")
-      );
+// Foto de perfil de Tux, la mascota de Linux.
+const profile = createElement("div", "profile-row");
 
-      const github = createElement("a", "", "Ver perfil de GitHub: DanielBarrientos727");
-      github.href = "https://github.com/DanielBarrientos727";
-      github.target = "_blank";
-      github.rel = "noopener noreferrer";
-      profileInfo.append(github);
-      profile.append(profileInfo);
-      maintainer.append(profile);
-      detailContent.append(maintainer);
+const avatar = document.createElement("img");
+avatar.className = "profile-avatar";
+avatar.src = "https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png";
+avatar.alt = "Tux, la mascota de Linux";
+avatar.loading = "lazy";
+avatar.referrerPolicy = "no-referrer";
+
+profile.append(avatar);
+
+const profileInfo = document.createElement("div");
+
+profileInfo.append(
+  createElement("h3", "", "Daniel Barrientos"),
+  createElement(
+    "p",
+    "",
+    "Estudiante de Ingeniería de Sistemas y Computación en la Universidad del Quindío y de Análisis y Desarrollo de Software en el SENA."
+  ),
+  createElement(
+    "p",
+    "muted small",
+    "Este sitio es un proyecto académico personal creado para organizar ejercicios, apuntes y recursos de Lógica de Programación. No es una página oficial de la Universidad del Quindío ni sustituye las orientaciones del curso."
+  )
+);
+
+// Enlace al perfil del mantenedor en GitHub.
+const github = createElement(
+  "a",
+  "",
+  "Ver perfil de GitHub: DanielBarrientos727"
+);
+
+github.href = "https://github.com/DanielBarrientos727";
+github.target = "_blank";
+github.rel = "noopener noreferrer";
+
+profileInfo.append(github);
+profile.append(profileInfo);
+maintainer.append(profile);
+detailContent.append(maintainer);
 
       const footer = createElement("footer", "site-footer", "Contenido educativo elaborado para estudio personal. Verifica las versiones, licencias y recomendaciones directamente en las fuentes enlazadas.");
       detailContent.append(footer);
