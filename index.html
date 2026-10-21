@@ -242,5 +242,97 @@
         </main>
 
     </div>
+
+    <!-- =========================================
+     AVISO DE LANZAMIENTO: JAVA UQ COMMUNITY
+========================================== -->
+<dialog
+    class="community-announcement"
+    id="communityAnnouncement"
+    aria-labelledby="communityAnnouncementTitle"
+    aria-describedby="communityAnnouncementDescription"
+>
+    <div class="community-announcement__content">
+
+        <div class="community-announcement__header">
+            <span class="community-announcement__badge">
+                <span aria-hidden="true">●</span>
+                NUEVO
+            </span>
+
+            <button
+                class="community-announcement__close"
+                type="button"
+                aria-label="Cerrar aviso"
+                title="Cerrar"
+                data-close-announcement
+            >
+                &times;
+            </button>
+        </div>
+
+        <!-- Imagen histórica de KDE 3.0 -->
+        <figure class="community-announcement__figure">
+            <img
+                class="community-announcement__image"
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e2/KDE-3.0n.png"
+                alt="Captura histórica del escritorio KDE 3.0"
+                fetchpriority="high"
+                decoding="async"
+            >
+
+            <figcaption class="community-announcement__caption">
+                <i>KDE 3.0 · Captura histórica</i>
+
+                <a
+                    href="https://commons.wikimedia.org/wiki/File:KDE-3.0n.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ver imagen original
+                </a>
+            </figcaption>
+        </figure>
+
+        <div class="community-announcement__body">
+            <span class="community-announcement__eyebrow">
+                JAVA UQ COMMUNITY
+            </span>
+
+            <h2 id="communityAnnouncementTitle">
+                ¡La comunidad ya está disponible!
+            </h2>
+
+            <p id="communityAnnouncementDescription">
+                Un espacio para compartir recursos, talleres, apuntes
+                y conocimientos sobre programación y ciencias de la
+                computación, especialmente para estudiantes de la
+                Universidad del Quindío.
+            </p>
+
+            <div class="community-announcement__actions">
+                <a
+                    class="community-announcement__button community-announcement__button--primary"
+                    href="https://danielbarrientos727.github.io/java-uq-community/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-close-announcement
+                >
+                    Visitar Java UQ Community
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <button
+                    class="community-announcement__button community-announcement__button--secondary"
+                    type="button"
+                    data-close-announcement
+                >
+                    Seguir estudiando
+                </button>
+            </div>
+        </div>
+
+    </div>
+</dialog>
 </body>
 </html>

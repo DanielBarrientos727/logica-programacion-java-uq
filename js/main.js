@@ -877,3 +877,67 @@
   /* Primera carga: muestra la portada general en la categoría Todos. */
   renderAll();
 })();
+
+// =========================================
+// AVISO DE LANZAMIENTO: JAVA UQ COMMUNITY
+// Se muestra una vez por sesión de pestaña.
+// =========================================
+
+(() => {
+    "use strict";
+
+    const announcement = document.getElementById(
+        "communityAnnouncement"
+    );
+
+    if (!announcement || typeof announcement.showModal !== "function") {
+        return;
+    }
+
+    const storageKey = "javaUQCommunityAnnouncementSeen";
+
+    // Evita volver a mostrar el aviso durante la misma sesión.
+    try {
+        if (sessionStorage.getItem(storageKey) === "true") {
+            return;
+        }
+    } catch (error) {
+        // Si el almacenamiento está bloqueado, el aviso sigue funcionando.
+    }
+
+    const markAsSeen = () => {
+        try {
+            sessionStorage.setItem(storageKey, "true");
+        } catch (error) {
+            // El cierre sigue funcionando aunque no haya almacenamiento.
+        }
+    };
+
+    const closeAnnouncement = () => {
+        markAsSeen();
+
+        if (announcement.open) {
+            announcement.close();
+        }
+    };
+
+    // Botón de cerrar, continuar estudiando y enlace a la comunidad.
+    announcement
+        .querySelectorAll("[data-close-announcement]")
+        .forEach((element) => {
+            element.addEventListener("click", closeAnnouncement);
+        });
+
+    // Cerrar al hacer clic en el fondo exterior del diálogo.
+    announcement.addEventListener("click", (event) => {
+        if (event.target === announcement) {
+            closeAnnouncement();
+        }
+    });
+
+    // Registrar también el cierre mediante la tecla Escape.
+    announcement.addEventListener("cancel", markAsSeen);
+
+    // Mostrar el aviso al iniciar la página.
+    announcement.showModal();
+})();

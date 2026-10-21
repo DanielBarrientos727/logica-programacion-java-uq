@@ -847,3 +847,296 @@ display: flex;
     font-size: inherit;
     line-height: inherit;
 }
+
+/* =========================================
+   AVISO DE LANZAMIENTO: JAVA UQ COMMUNITY
+========================================= */
+
+.community-announcement {
+    width: min(92vw, 540px);
+    max-width: 540px;
+    max-height: 90vh;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    color: #cdd6f4;
+    background: #1e1e2e;
+
+    border: 1px solid #45475a;
+    border-radius: 18px;
+
+    box-shadow:
+        0 24px 80px rgb(0 0 0 / 45%),
+        0 0 0 1px rgb(203 166 247 / 5%);
+}
+
+/* Evita mostrar el diálogo antes de abrirlo con JavaScript. */
+.community-announcement:not([open]) {
+    display: none;
+}
+
+/* Fondo oscurecido detrás del aviso. */
+.community-announcement::backdrop {
+    background: rgb(17 17 27 / 78%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Interior del aviso. */
+.community-announcement__content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabecera. */
+.community-announcement__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    padding: 1rem 1.1rem 0.8rem;
+}
+
+.community-announcement__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.35rem 0.65rem;
+
+    color: #a6e3a1;
+    background: rgb(166 227 161 / 9%);
+
+    border: 1px solid rgb(166 227 161 / 20%);
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.community-announcement__badge span {
+    color: #a6e3a1;
+    font-size: 0.6rem;
+}
+
+/* Botón superior para cerrar. */
+.community-announcement__close {
+    display: grid;
+    place-items: center;
+
+    width: 36px;
+    height: 36px;
+    padding: 0;
+
+    color: #a6adc8;
+    background: #313244;
+
+    border: 1px solid #45475a;
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        color 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+}
+
+.community-announcement__close:hover {
+    color: #f38ba8;
+    background: #45475a;
+    border-color: #f38ba8;
+}
+
+/* Imagen de KDE 3.0. */
+.community-announcement__figure {
+    margin: 0;
+    padding: 0 1rem;
+}
+
+.community-announcement__image {
+    display: block;
+
+    width: 100%;
+    max-height: 270px;
+
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+
+    background: #11111b;
+
+    border: 1px solid #45475a;
+    border-radius: 12px;
+}
+
+/* Crédito de la imagen. */
+.community-announcement__caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    padding: 0.6rem 0.1rem 0;
+
+    color: #7f849c;
+    font-size: 0.72rem;
+}
+
+.community-announcement__caption a {
+    color: #89b4fa;
+    text-decoration: none;
+}
+
+.community-announcement__caption a:hover {
+    color: #b4befe;
+    text-decoration: underline;
+}
+
+/* Texto principal. */
+.community-announcement__body {
+    padding: 1.25rem 1.4rem 1.4rem;
+}
+
+.community-announcement__eyebrow {
+    color: #cba6f7;
+
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+}
+
+.community-announcement__body h2 {
+    margin: 0.6rem 0 0.7rem;
+
+    color: #cdd6f4;
+
+    font-size: clamp(1.45rem, 5vw, 1.85rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.community-announcement__body p {
+    margin: 0;
+
+    color: #a6adc8;
+
+    font-size: 0.94rem;
+    line-height: 1.75;
+}
+
+/* Botones de acción. */
+.community-announcement__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+
+    margin-top: 1.35rem;
+}
+
+.community-announcement__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+
+    width: 100%;
+    min-height: 46px;
+    padding: 0.75rem 1rem;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 160ms ease,
+        background 160ms ease,
+        border-color 160ms ease;
+}
+
+.community-announcement__button:hover {
+    transform: translateY(-1px);
+}
+
+.community-announcement__button--primary {
+    color: #1e1e2e;
+    background: #cba6f7;
+}
+
+.community-announcement__button--primary:hover {
+    background: #b4befe;
+}
+
+.community-announcement__button--secondary {
+    color: #bac2de;
+    background: #313244;
+    border-color: #45475a;
+}
+
+.community-announcement__button--secondary:hover {
+    color: #cdd6f4;
+    background: #45475a;
+}
+
+.community-announcement__button:focus-visible,
+.community-announcement__close:focus-visible,
+.community-announcement__caption a:focus-visible {
+    outline: 2px solid #89b4fa;
+    outline-offset: 3px;
+}
+
+/* Adaptación para pantallas pequeñas. */
+@media (max-width: 480px) {
+    .community-announcement {
+        width: calc(100vw - 24px);
+        border-radius: 14px;
+    }
+
+    .community-announcement__header {
+        padding: 0.8rem 0.85rem 0.7rem;
+    }
+
+    .community-announcement__figure {
+        padding: 0 0.85rem;
+    }
+
+    .community-announcement__image {
+        max-height: 220px;
+    }
+
+    .community-announcement__body {
+        padding: 1rem 1rem 1.1rem;
+    }
+
+    .community-announcement__body p {
+        font-size: 0.88rem;
+    }
+}
+
+/* Respeta la preferencia de movimiento reducido. */
+@media (prefers-reduced-motion: reduce) {
+    .community-announcement__button,
+    .community-announcement__close {
+        transition: none;
+    }
+
+    .community-announcement__button:hover {
+        transform: none;
+    }
+}
