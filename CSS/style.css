@@ -1,0 +1,824 @@
+/* ================================================================
+       1. PALETA Y CONFIGURACIÓN GLOBAL
+       Los temas cambian estas variables; los componentes reutilizan los
+       mismos nombres para evitar duplicar las reglas de estilo.
+       ================================================================ */
+    :root {
+      color-scheme: dark;
+      --bg: #1e1e2e;
+      --panel: #181825;
+      --surface: #313244;
+      --hover: #45475a;
+      --border: #313244;
+      --text: #cdd6f4;
+      --muted: #a6adc8;
+      --blue: #89b4fa;
+      --blue-bg: #313f5a;
+      --green: #a6e3a1;
+      --wallpaper-shade: rgba(24, 24, 37, 0.48);
+      --glass: rgba(24, 24, 37, 0.86);
+      --code-bg: rgba(17, 17, 27, 0.92);
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="latte"] {
+      color-scheme: light;
+      --bg: #eff1f5;
+      --panel: #e6e9ef;
+      --surface: #dce0e8;
+      --hover: #ccd0da;
+      --border: #ccd0da;
+      --text: #4c4f69;
+      --muted: #6c6f85;
+      --blue: #1e66f5;
+      --blue-bg: #dce8ff;
+      --green: #40a02b;
+      --wallpaper-shade: rgba(239, 241, 245, 0.48);
+      --glass: rgba(255, 255, 255, 0.89);
+      --code-bg: rgba(24, 24, 37, 0.96);
+      --shadow: 0 12px 36px rgba(76, 79, 105, 0.10);
+    }
+
+    /* El tamaño incluye el padding y el borde para facilitar el diseño. */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      min-height: 100%;
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      color: inherit;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    ::selection {
+      background: var(--blue-bg);
+      color: var(--text);
+    }
+
+    /* Barras de desplazamiento discretas, acordes con ambos temas. */
+    * {
+      scrollbar-color: var(--hover) transparent;
+      scrollbar-width: thin;
+    }
+
+    *::-webkit-scrollbar {
+      width: 9px;
+      height: 9px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      border: 2px solid transparent;
+      border-radius: 999px;
+      background: var(--hover);
+      background-clip: padding-box;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 220px 320px minmax(0, 1fr);
+      width: 100%;
+      height: 100vh;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    /* ================================================================
+       2. BARRA LATERAL: MARCA, CATEGORÍAS Y TEMA
+       ================================================================ */
+    .sidebar,
+    .list-panel,
+    .details {
+      min-width: 0;
+      min-height: 0;
+      overflow: auto;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 18px 12px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 8px 22px;
+    }
+
+    .logo {
+      display: block;
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      padding: 3px;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .photo-credit {
+      display: inline-block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+    .photo-credit:hover {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+
+    .section-label {
+      padding: 8px 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .categories {
+      display: grid;
+      gap: 3px;
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 9px 10px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .category,
+    .exercise,
+    .plain-button,
+    .resource-card a {
+      transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+    }
+
+    .category:hover,
+    .exercise:hover {
+      background: var(--surface);
+    }
+
+    .category.active {
+      background: var(--blue-bg);
+      color: var(--blue);
+    }
+
+    .category-icon {
+      display: inline-grid;
+      flex: 0 0 18px;
+      place-items: center;
+      width: 18px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .count {
+      margin-left: auto;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+.sidebar-bottom {
+      margin-top: auto;
+      padding: 16px 4px 0;
+    }
+
+    .plain-button {
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .plain-button:hover {
+      background: var(--hover);
+    }
+
+    /* ================================================================
+       3. PANEL CENTRAL: BÚSQUEDA Y LISTADO DE EJERCICIOS
+       ================================================================ */
+    .list-panel {
+      background: #11111b;
+      border-right: 1px solid var(--border);
+    }
+
+    [data-theme="latte"] .list-panel {
+      background: #fff;
+    }
+
+    .list-head {
+      padding: 18px 15px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .list-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .list-title {
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .search {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .search:focus {
+      border-color: var(--blue);
+      outline: none;
+    }
+
+    .exercise-list {
+      padding: 6px;
+    }
+
+    .exercise {
+      display: block;
+      width: 100%;
+      margin-bottom: 2px;
+      padding: 11px 10px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      text-align: left;
+    }
+
+    .exercise.active {
+      background: var(--blue-bg);
+    }
+
+    .exercise.active strong {
+      color: var(--blue);
+    }
+
+    .exercise strong {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+    }
+
+    .exercise .desc {
+      display: -webkit-box;
+      overflow: hidden;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .empty {
+      padding: 24px 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ================================================================
+       4. PANEL DERECHO: PORTADA, WIKI DE CATEGORÍA O FICHA DE EJERCICIO
+       ================================================================ */
+    .details {
+      position: relative;
+      padding: 0;
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(var(--wallpaper-shade), var(--wallpaper-shade)),
+        url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Lake_near_Sunnig_Grat_summit.JPG/1280px-Lake_near_Sunnig_Grat_summit.JPG");
+      background-position: center;
+      background-size: cover;
+      background-attachment: local;
+    }
+
+    .details-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .content {
+      max-width: 860px;
+      margin: 30px auto;
+      padding: 30px 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--glass);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(23px, 3vw, 32px);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    h2 {
+      margin: 28px 0 10px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 8px 0 12px;
+    }
+
+    .lead,
+    .description {
+      margin: 12px 0 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .content-section {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .content-section:first-of-type {
+      margin-top: 0;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 22px;
+    }
+
+    .content li {
+      margin: 6px 0;
+    }
+
+    .concept-grid,
+    .resource-grid,
+    .timeline,
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .info-card,
+    .concept-card,
+    .resource-card,
+    .timeline-card {
+      min-width: 0;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+    }
+
+    .info-card p,
+    .concept-card p,
+    .resource-card p,
+    .timeline-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline-year {
+      margin-bottom: 7px;
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .path-label {
+      margin: 22px 0 8px;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .path-box {
+display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    code {
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .code-block {
+      overflow-x: auto;
+      margin: 12px 0 16px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--code-bg);
+    }
+
+    .code-block code {
+      display: block;
+      color: #cdd6f4;
+      font-size: 12px;
+      line-height: 1.7;
+      white-space: pre;
+    }
+
+    .callout {
+      margin: 16px 0;
+      padding: 14px 16px;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      background: var(--blue-bg);
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .resource-card a {
+      display: inline-block;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .resource-card a:hover {
+      text-decoration: underline;
+    }
+
+    .video-wrap {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      margin-top: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #11111b;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .welcome {
+      display: grid;
+      min-height: calc(100vh - 60px);
+      place-items: center;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .welcome-card {
+      max-width: 440px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--glass);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .welcome-icon {
+      display: grid;
+      width: 72px;
+      height: 72px;
+      place-items: center;
+      margin: 0 auto 18px;
+      padding: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .welcome-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .welcome h1 {
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .welcome p {
+      max-width: 340px;
+      margin-right: auto;
+      margin-left: auto;
+      color: var(--muted);
+    }
+
+    .wallpaper-credit {
+      position: fixed;
+      right: 10px;
+      bottom: 8px;
+      z-index: 3;
+      max-width: calc(100% - 20px);
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: var(--glass);
+      color: var(--text);
+      font-size: 10px;
+      text-decoration: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .wallpaper-credit:hover {
+      color: var(--blue);
+    }
+
+    .mobile-back {
+      display: none;
+    }
+
+    .profile-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .profile-avatar {
+      display: block;
+      flex: 0 0 58px;
+      width: 58px;
+      height: 58px;
+      padding: 3px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--blue);
+      font-size: 19px;
+      font-weight: 800;
+      object-fit: contain;
+    }
+
+    .site-footer {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ================================================================
+       5. DISEÑO ADAPTABLE
+       En móviles, las categorías pasan a una franja desplazable. La ficha
+       ocupa la pantalla al abrir teoría o un ejercicio, con botón de vuelta.
+       ================================================================ */
+    @media (max-width: 1050px) {
+      .app {
+        grid-template-columns: 190px 280px minmax(0, 1fr);
+      }
+
+      .content {
+        margin: 20px 14px;
+        padding: 24px 20px;
+      }
+
+      .concept-grid,
+      .resource-grid,
+      .timeline,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .app {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        min-height: 0;
+      }
+
+      .sidebar {
+        flex: 0 0 auto;
+        gap: 5px;
+        padding: 9px 10px 8px;
+        overflow: hidden;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .brand {
+        padding: 0 4px 7px;
+      }
+
+      .logo {
+        width: 32px;
+        height: 32px;
+      }
+
+      .brand strong {
+        font-size: 13px;
+      }
+
+      .brand .small,
+      .photo-credit,
+      .section-label,
+      .sidebar-bottom {
+        display: none;
+      }
+
+      .categories {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: thin;
+      }
+
+      .category {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 7px 9px;
+        white-space: nowrap;
+      }
+
+      .category .count {
+        margin-left: 2px;
+      }
+
+      .list-panel {
+        flex: 1 1 auto;
+        min-height: 0;
+        border-right: 0;
+      }
+
+      .details {
+        display: none;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+
+      .app.show-details .sidebar,
+      .app.show-details .list-panel {
+        display: none;
+      }
+
+      .app.show-details .details {
+        display: block;
+      }
+
+      .details-head {
+        padding: 10px 12px;
+      }
+
+      .mobile-back {
+        display: inline-block;
+      }
+
+      .content {
+        margin: 12px;
+        padding: 22px 17px;
+      }
+
+      .welcome {
+        min-height: calc(100dvh - 55px);
+      }
+
+      .path-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .wallpaper-credit {
+        position: static;
+        display: block;
+        width: fit-content;
+        margin: 8px auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
