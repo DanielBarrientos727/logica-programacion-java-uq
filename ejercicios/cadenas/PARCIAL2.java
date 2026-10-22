@@ -1,22 +1,17 @@
 public class PARCIAL2 {
 
     public static final int META = 500000; //-->>>> CONSTANTES
-    public static final double INCREMENTO = 0.10; //-->>>> CONSTANTES
+    public static final double PORCENTAJE = 0.10; //-->>>> CONSTANTES
 
     static void main(String[] args) {
 
-
-        System.out.println("-----------------------------------------------------------");
 
         int cantidadPedidos = Reutilizacion.ingresarEnteroMayorQue(
                 "Por favor ingrese estimado usuario la cantidad de pedidos que se pudieron realizar en la correspodiente jornada: ", 0
         );
 
-        System.out.println("-----------------------------------------------------------");
-
         // Paso 1: Nos toca calcular el total de las ventas
 
-        System.out.println("-----------------------------------------------------------");
 
         int totalVentas = sumatoriaPrecio(cantidadPedidos);
 
