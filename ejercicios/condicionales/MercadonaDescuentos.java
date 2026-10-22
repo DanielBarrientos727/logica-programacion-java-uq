@@ -1,7 +1,7 @@
 public class MercadonaDescuentos {
     public static void main(String[] args) {
-        int cantidadProductos = Reutilizacion.ingresarEntero("Ingrese la cantidad de productos comprados: ");
-        double totalCompra = Reutilizacion.ingresarRealD("Ingrese el valor total de la compra: ");
+        int cantidadProductos = notas.Reutilizacion.ingresarEntero("Ingrese la cantidad de productos comprados: ");
+        double totalCompra = notas.Reutilizacion.ingresarRealD("Ingrese el valor total de la compra: ");
         double descuento = 0.0;
         
         if (cantidadProductos >= 5 && totalCompra > 50000) {

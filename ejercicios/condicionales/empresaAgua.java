@@ -1,7 +1,7 @@
 public class empresaAgua {
     static void main(String[] args) {
-        double consumo = Reutilizacion.ingresarRealD("Por favor, ingrese el consumo mensual de agua en metros cubicos:");
-        double valor = Reutilizacion.ingresarRealD("Por favor, ingrese cuanto vale el metro cubico de agua:");
+        double consumo = notas.Reutilizacion.ingresarRealD("Por favor, ingrese el consumo mensual de agua en metros cubicos:");
+        double valor = notas.Reutilizacion.ingresarRealD("Por favor, ingrese cuanto vale el metro cubico de agua:");
         double valorFactura = sumaTotal(consumo, valor);
         double valorFinal = desicion(consumo, valorFactura);
         generarMensaje(valorFactura, valorFinal);

@@ -14,8 +14,8 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioA() {
         System.out.println("\n--- Ejercicio A: comparación de dos números ---");
-        double numero1 = Reutilizacion.ingresarRealD("Número 1: ");
-        double numero2 = Reutilizacion.ingresarRealD("Número 2: ");
+        double numero1 = notas.Reutilizacion.ingresarRealD("Número 1: ");
+        double numero2 = notas.Reutilizacion.ingresarRealD("Número 2: ");
 
         if (numero1 > numero2) {
             System.out.printf("Suma: %.2f%n", numero1 + numero2);
@@ -32,7 +32,7 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioB() {
         System.out.println("\n--- Ejercicio B: bonificación salarial ---");
-        double sueldo = Reutilizacion.ingresarRealD("Ingrese el sueldo del empleado: ");
+        double sueldo = notas.Reutilizacion.ingresarRealD("Ingrese el sueldo del empleado: ");
 
         if (sueldo < 0) {
             System.out.println("El sueldo no puede ser negativo.");
@@ -49,8 +49,8 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioC() {
         System.out.println("\n--- Ejercicio C: descuento en diciembre ---");
-        String mes = Reutilizacion.ingresarTexto("Ingrese el mes: ");
-        double compra = Reutilizacion.ingresarRealD("Ingrese el valor de la compra: ");
+        String mes = notas.Reutilizacion.ingresarTexto("Ingrese el mes: ");
+        double compra = notas.Reutilizacion.ingresarRealD("Ingrese el valor de la compra: ");
 
         if (compra < 0) {
             System.out.println("El valor de la compra no puede ser negativo.");
@@ -67,7 +67,7 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioD() {
         System.out.println("\n--- Ejercicio D: descuento en factura de EDEQ ---");
-        double factura = Reutilizacion.ingresarRealD("Ingrese el monto de la factura: ");
+        double factura = notas.Reutilizacion.ingresarRealD("Ingrese el monto de la factura: ");
 
         if (factura < 0) {
             System.out.println("El valor de la factura no puede ser negativo.");
@@ -84,8 +84,8 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioE() {
         System.out.println("\n--- Ejercicio E: venta de terreno ---");
-        double metrosCuadrados = Reutilizacion.ingresarRealD("Metros cuadrados del terreno: ");
-        double valorMetroCuadrado = Reutilizacion.ingresarRealD("Valor por metro cuadrado: ");
+        double metrosCuadrados = notas.Reutilizacion.ingresarRealD("Metros cuadrados del terreno: ");
+        double valorMetroCuadrado = notas.Reutilizacion.ingresarRealD("Valor por metro cuadrado: ");
 
         if (metrosCuadrados < 0 || valorMetroCuadrado < 0) {
             System.out.println("El área y el valor por metro cuadrado no pueden ser negativos.");
@@ -103,8 +103,8 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioF() {
         System.out.println("\n--- Ejercicio F: costo de hospitalización ---");
-        int dias = Reutilizacion.ingresarEntero("Días de hospitalización: ");
-        double valorDia = Reutilizacion.ingresarRealD("Valor por día: ");
+        int dias = notas.Reutilizacion.ingresarEntero("Días de hospitalización: ");
+        double valorDia = notas.Reutilizacion.ingresarRealD("Valor por día: ");
 
         if (dias < 0 || valorDia < 0) {
             System.out.println("Los días y el valor por día no pueden ser negativos.");
@@ -122,8 +122,8 @@ public class Taller4ProblemasDecision {
 
     private static void ejercicioG() {
         System.out.println("\n--- Ejercicio G: pasaje de ida y vuelta ---");
-        double distanciaKm = Reutilizacion.ingresarRealD("Distancia del viaje en kilómetros: ");
-        int diasEstancia = Reutilizacion.ingresarEntero("Número de días de estancia: ");
+        double distanciaKm = notas.Reutilizacion.ingresarRealD("Distancia del viaje en kilómetros: ");
+        int diasEstancia = notas.Reutilizacion.ingresarEntero("Número de días de estancia: ");
 
         if (distanciaKm < 0 || diasEstancia < 0) {
             System.out.println("La distancia y los días de estancia no pueden ser negativos.");

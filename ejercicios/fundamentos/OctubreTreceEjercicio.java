@@ -1,11 +1,10 @@
-import java.util.Scanner;
 public class OctubreTreceEjercicio {
     public static final double INTERESES = 0.10;
     public static final double DEPOSITOMINIMO = 1.0;
     public static void main(String[] args) {
         System.out.println("Bienvenid@, te voy a ayudar a calcular tus ahorros");
-        double cantidadInicial = Reutilizacion.ingresarRealMayorQue("Necesito saber cuanto dinero ingresaste: ", DEPOSITOMINIMO);
-        double metaAhorro = Reutilizacion.ingresarRealMayorQue("Cual es tu meta de ahorro teniendo en cuenta el dinero ingresado: ", cantidadInicial);
+        double cantidadInicial = notas.Reutilizacion.ingresarRealMayorQue("Necesito saber cuanto dinero ingresaste: ", DEPOSITOMINIMO);
+        double metaAhorro = notas.Reutilizacion.ingresarRealMayorQue("Cual es tu meta de ahorro teniendo en cuenta el dinero ingresado: ", cantidadInicial);
         int mesesAhorro = calcularMesesAhorro (cantidadInicial, metaAhorro, INTERESES, DEPOSITOMINIMO);
         generarMensaje (mesesAhorro);
     }

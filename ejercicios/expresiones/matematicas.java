@@ -1,6 +1,6 @@
 public class matematicas {
     static void main(String[] args) {
-        int numero = Reutilizacion.ingresarEntero("Por favor ingresar el numero:");
+        int numero = notas.Reutilizacion.ingresarEntero("Por favor ingresar el numero:");
         String desicion = calcularNum(numero);
         generarMensaje(desicion);
     }

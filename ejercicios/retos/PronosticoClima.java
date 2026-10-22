@@ -1,7 +1,7 @@
 public class PronosticoClima {
     public static void main(String[] args) {
-        double temperatura = Reutilizacion.ingresarRealD("Ingrese la temperatura actual en grados Celsius: ");
-        String cielo = Reutilizacion.ingresarTexto("Ingrese el estado del cielo (soleado, nublado, lluvioso): ");
+        double temperatura = notas.Reutilizacion.ingresarRealD("Ingrese la temperatura actual en grados Celsius: ");
+        String cielo = notas.Reutilizacion.ingresarTexto("Ingrese el estado del cielo (soleado, nublado, lluvioso): ");
         
         String descripcion = "Clima variable";
         

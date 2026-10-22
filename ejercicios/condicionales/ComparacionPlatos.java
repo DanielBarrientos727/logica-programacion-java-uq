@@ -1,7 +1,7 @@
 public class ComparacionPlatos {
     public static void main(String[] args) {
-        double plato1 = Reutilizacion.ingresarRealD("Ingrese la calificación del plato A: ");
-        double plato2 = Reutilizacion.ingresarRealD("Ingrese la calificación del plato B: ");
+        double plato1 = notas.Reutilizacion.ingresarRealD("Ingrese la calificación del plato A: ");
+        double plato2 = notas.Reutilizacion.ingresarRealD("Ingrese la calificación del plato B: ");
         generarMensajeRelacion(plato1, plato2);
     }
 

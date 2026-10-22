@@ -1,8 +1,8 @@
 public class fashion {
     static void main(String[] args) {
-        String genero = Reutilizacion.ingresarTexto("Cliente, ingrese su genero: ");
-        double presupuesto = Reutilizacion.ingresarRealD("Clinete, ingrese su presupuesto: ");
-        String estacionFav = Reutilizacion.ingresarTexto("Cliente, cual es su estacion favorita? verano o invierno? ");
+        String genero = notas.Reutilizacion.ingresarTexto("Cliente, ingrese su genero: ");
+        double presupuesto = notas.Reutilizacion.ingresarRealD("Clinete, ingrese su presupuesto: ");
+        String estacionFav = notas.Reutilizacion.ingresarTexto("Cliente, cual es su estacion favorita? verano o invierno? ");
         String decision = recomendacion(genero, presupuesto, estacionFav);
         generarMensaje(decision);
     }

@@ -1,9 +1,7 @@
-
-import java.util.Scanner;
 public class ServicioTransporte{
     public static void main (String[]args){
-        int menuOpciones = Reutilizacion.ingresarEntero("Ingrese el servicio de transporte 1.Bus urbano 2.Bus intermunicipal 3.Servicio especial 4.Taxi compartido: ");
-        double kilometrosRecorrido = Reutilizacion.ingresarRealD("Ingrese los kilometros del recorrido: ");
+        int menuOpciones = notas.Reutilizacion.ingresarEntero("Ingrese el servicio de transporte 1.Bus urbano 2.Bus intermunicipal 3.Servicio especial 4.Taxi compartido: ");
+        double kilometrosRecorrido = notas.Reutilizacion.ingresarRealD("Ingrese los kilometros del recorrido: ");
         double valorKilometro = calcularValorKilometro (menuOpciones);
         double valorTotal = calcularValorTotal (valorKilometro, kilometrosRecorrido);
         generarMensaje (valorKilometro, valorTotal);

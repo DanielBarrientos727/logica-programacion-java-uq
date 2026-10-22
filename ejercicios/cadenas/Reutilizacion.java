@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class Reutilizacion {
     private static final Scanner scanner = new Scanner(System.in);
 
-    // Método para ingresar enteros con validación de tipo de dato
+
+    //String
+
     public static int ingresarEntero(String mensaje) {
         System.out.print(mensaje);
         while (!scanner.hasNextInt()) {
@@ -15,7 +17,8 @@ public class Reutilizacion {
         return valor;
     }
 
-    // Método para ingresar números reales (double) con validación de tipo
+    //Double
+
     public static double ingresarRealD(String mensaje) {
         System.out.print(mensaje);
         while (!scanner.hasNextDouble()) {
@@ -27,13 +30,15 @@ public class Reutilizacion {
         return valor;
     }
 
-    // Método para ingresar texto
+    //IngresarTextos
+
     public static String ingresarTexto(String mensaje) {
         System.out.print(mensaje);
         return scanner.nextLine();
     }
 
-    // Método para validar que un entero sea mayor que un valor mínimo
+    //IngresarEnteroMayorQue
+
     public static int ingresarEnteroMayorQue(String mensaje, int valorMinimo) {
         boolean repetir = true;
         int valor = 0;
@@ -48,7 +53,8 @@ public class Reutilizacion {
         return valor;
     }
 
-    // Método para validar que un real sea mayor que un valor mínimo
+    //IngresarRealMayorQue
+
     public static double ingresarRealMayorQue(String mensaje, double valorMinimo) {
         boolean repetir = true;
         double valor = 0.0;
@@ -62,4 +68,6 @@ public class Reutilizacion {
         }
         return valor;
     }
+
+
 }

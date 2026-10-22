@@ -3,13 +3,13 @@ public class OctubreTreceEjercicio1 {
     public static final double DEPOSITOMINIMO = 1.0;
 
     public static void main(String[] args) {
-        double cantidadInicial = Reutilizacion.ingresarRealMayorQue(
+        double cantidadInicial = notas.Reutilizacion.ingresarRealMayorQue(
                 "Bienvenid@, te voy a ayudar a calcular tus ahorros" +
                         "\nNecesito saber cuanto dinero ingresaste: ",
                 DEPOSITOMINIMO
         );
 
-        double metaAhorro = Reutilizacion.ingresarRealMayorQue(
+        double metaAhorro = notas.Reutilizacion.ingresarRealMayorQue(
                 "Cual es tu meta de ahorro teniendo en cuenta el dinero ingresado: ",
                 cantidadInicial
         );

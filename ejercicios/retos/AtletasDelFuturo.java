@@ -1,10 +1,10 @@
 public class AtletasDelFuturo {
     public static void main(String[] args) {
-        String nombre = Reutilizacion.ingresarTexto("Ingrese el nombre del estudiante: ");
-        int edad = Reutilizacion.ingresarEntero("Ingrese la edad: ");
-        double tiempo100m = Reutilizacion.ingresarRealD("Ingrese el tiempo en 100m (segundos): ");
-        int abdominales = Reutilizacion.ingresarEntero("Ingrese el número de abdominales en un minuto: ");
-        int flexiones = Reutilizacion.ingresarEntero("Ingrese la cantidad de flexiones de pecho: ");
+        String nombre = notas.Reutilizacion.ingresarTexto("Ingrese el nombre del estudiante: ");
+        int edad = notas.Reutilizacion.ingresarEntero("Ingrese la edad: ");
+        double tiempo100m = notas.Reutilizacion.ingresarRealD("Ingrese el tiempo en 100m (segundos): ");
+        int abdominales = notas.Reutilizacion.ingresarEntero("Ingrese el número de abdominales en un minuto: ");
+        int flexiones = notas.Reutilizacion.ingresarEntero("Ingrese la cantidad de flexiones de pecho: ");
         
         int puntosCarrera = (tiempo100m <= 12) ? 50 : (tiempo100m <= 15 ? 30 : 10);
         int puntosAbdominales = (abdominales >= 40) ? 30 : (abdominales >= 20 ? 20 : 10);

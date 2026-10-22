@@ -1,7 +1,7 @@
 public class clima {
     static void main(String[] args) {
-        double temperatura = Reutilizacion.ingresarRealD("Por favor ingrese la temperatura actual en Grados Celcius ");
-        String estadoCielo = Reutilizacion.ingresarTexto("Por favor ingresar el estado del cielo: (soleado, nublado, lluvioso) ");
+        double temperatura = notas.Reutilizacion.ingresarRealD("Por favor ingrese la temperatura actual en Grados Celcius ");
+        String estadoCielo = notas.Reutilizacion.ingresarTexto("Por favor ingresar el estado del cielo: (soleado, nublado, lluvioso) ");
         String condicion = desicion(temperatura, estadoCielo);
         generarMensaje(condicion);
     }

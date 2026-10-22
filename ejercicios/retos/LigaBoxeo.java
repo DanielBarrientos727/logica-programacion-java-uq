@@ -1,6 +1,6 @@
 public class LigaBoxeo {
     public static void main(String[] args) {
-        double peso = Reutilizacion.ingresarRealD("Ingrese el peso del luchador en kg: ");
+        double peso = notas.Reutilizacion.ingresarRealD("Ingrese el peso del luchador en kg: ");
         String categoria = determinarCategoriaBoxeo(peso);
         System.out.println("La categoría a la que pertenece el luchador es: " + categoria);
     }

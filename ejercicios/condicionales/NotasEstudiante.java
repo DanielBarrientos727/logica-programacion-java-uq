@@ -1,6 +1,6 @@
 public class NotasEstudiante {
     public static void main(String[] args) {
-        double nota = Reutilizacion.ingresarRealD("Ingrese la nota definitiva (0.0 - 5.0): ");
+        double nota = notas.Reutilizacion.ingresarRealD("Ingrese la nota definitiva (0.0 - 5.0): ");
         generarMensajeNota(nota);
     }
 

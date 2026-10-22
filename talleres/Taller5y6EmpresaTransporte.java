@@ -9,13 +9,13 @@ public class Taller5y6EmpresaTransporte {
         System.out.println("3. Servicio especial");
         System.out.println("4. Taxi compartido");
 
-        int opcion = Reutilizacion.ingresarEntero("Seleccione una opción (1-4): ");
+        int opcion = notas.Reutilizacion.ingresarEntero("Seleccione una opción (1-4): ");
         if (opcion < 1 || opcion > 4) {
             System.out.println("La opción ingresada no es válida.");
             return;
         }
 
-        double kilometros = Reutilizacion.ingresarRealD("Ingrese los kilómetros recorridos: ");
+        double kilometros = notas.Reutilizacion.ingresarRealD("Ingrese los kilómetros recorridos: ");
         if (kilometros < 0) {
             System.out.println("Los kilómetros recorridos no pueden ser negativos.");
             return;

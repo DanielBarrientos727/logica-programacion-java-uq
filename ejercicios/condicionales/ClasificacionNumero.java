@@ -1,6 +1,6 @@
 public class ClasificacionNumero {
     public static void main(String[] args) {
-        int numero = Reutilizacion.ingresarEntero("Ingrese un número entero: ");
+        int numero = notas.Reutilizacion.ingresarEntero("Ingrese un número entero: ");
         
         if (numero > 0) {
             if (numero > 100) {

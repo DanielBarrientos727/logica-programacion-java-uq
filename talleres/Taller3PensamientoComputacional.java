@@ -12,8 +12,8 @@ public class Taller3PensamientoComputacional {
 
     private static void calcularDevuelta() {
         System.out.println("\n--- Devuelta de una compra ---");
-        double totalFactura = Reutilizacion.ingresarRealD("Total de la factura: ");
-        double dineroEntregado = Reutilizacion.ingresarRealD("Dinero entregado por el cliente: ");
+        double totalFactura = notas.Reutilizacion.ingresarRealD("Total de la factura: ");
+        double dineroEntregado = notas.Reutilizacion.ingresarRealD("Dinero entregado por el cliente: ");
 
         if (totalFactura < 0 || dineroEntregado < 0) {
             System.out.println("Los valores no pueden ser negativos.");
@@ -26,8 +26,8 @@ public class Taller3PensamientoComputacional {
 
     private static void calcularDescuentoTienda() {
         System.out.println("\n--- Descuento de una tienda ---");
-        double valorProducto = Reutilizacion.ingresarRealD("Ingrese el valor del producto: ");
-        double porcentajeDescuento = Reutilizacion.ingresarRealD(
+        double valorProducto = notas.Reutilizacion.ingresarRealD("Ingrese el valor del producto: ");
+        double porcentajeDescuento = notas.Reutilizacion.ingresarRealD(
                 "Ingrese el porcentaje de descuento (por ejemplo, 15 para 15%): ");
 
         if (valorProducto < 0 || porcentajeDescuento < 0 || porcentajeDescuento > 100) {
@@ -44,7 +44,7 @@ public class Taller3PensamientoComputacional {
 
     private static void convertirTemperatura() {
         System.out.println("\n--- Conversión de temperatura ---");
-        double celsius = Reutilizacion.ingresarRealD("Ingrese la temperatura en grados Celsius: ");
+        double celsius = notas.Reutilizacion.ingresarRealD("Ingrese la temperatura en grados Celsius: ");
         double kelvin = celsius + 273.15;
         double fahrenheit = celsius * 9.0 / 5.0 + 32.0;
 
@@ -54,9 +54,9 @@ public class Taller3PensamientoComputacional {
 
     private static void calcularConsumoCombustible() {
         System.out.println("\n--- Consumo de combustible ---");
-        double kilometros = Reutilizacion.ingresarRealD("Ingrese los kilómetros recorridos: ");
-        double litros = Reutilizacion.ingresarRealD("Ingrese los litros de gasolina consumidos: ");
-        double precioLitro = Reutilizacion.ingresarRealD("Ingrese el precio por litro: ");
+        double kilometros = notas.Reutilizacion.ingresarRealD("Ingrese los kilómetros recorridos: ");
+        double litros = notas.Reutilizacion.ingresarRealD("Ingrese los litros de gasolina consumidos: ");
+        double precioLitro = notas.Reutilizacion.ingresarRealD("Ingrese el precio por litro: ");
 
         if (kilometros < 0 || litros <= 0 || precioLitro < 0) {
             System.out.println("Los kilómetros y el precio no pueden ser negativos; los litros deben ser mayores que cero.");
@@ -72,9 +72,9 @@ public class Taller3PensamientoComputacional {
 
     private static void calcularCostoEnvio() {
         System.out.println("\n--- Costo de envío ---");
-        double pesoKg = Reutilizacion.ingresarRealD("Ingrese el peso del paquete en kg: ");
-        double costoKg = Reutilizacion.ingresarRealD("Ingrese el costo por kilogramo: ");
-        double costoFijo = Reutilizacion.ingresarRealD("Ingrese el costo fijo del servicio: ");
+        double pesoKg = notas.Reutilizacion.ingresarRealD("Ingrese el peso del paquete en kg: ");
+        double costoKg = notas.Reutilizacion.ingresarRealD("Ingrese el costo por kilogramo: ");
+        double costoFijo = notas.Reutilizacion.ingresarRealD("Ingrese el costo fijo del servicio: ");
 
         if (pesoKg < 0 || costoKg < 0 || costoFijo < 0) {
             System.out.println("El peso y los costos no pueden ser negativos.");

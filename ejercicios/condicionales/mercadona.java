@@ -1,7 +1,7 @@
 public class mercadona {
     static void main(String[] args) {
-        double producto =Reutilizacion.ingresarRealD("Cliente, por favor ingresar la cantidad de productos comprados: ");
-        double valorCompra = Reutilizacion.ingresarRealD("Cliente, por favor ingresar el valor total de su compra: ");
+        double producto = notas.Reutilizacion.ingresarRealD("Cliente, por favor ingresar la cantidad de productos comprados: ");
+        double valorCompra = notas.Reutilizacion.ingresarRealD("Cliente, por favor ingresar el valor total de su compra: ");
         double valorDescuento = calcularDescuento (producto, valorCompra);
         generarMensaje(valorDescuento);
     }

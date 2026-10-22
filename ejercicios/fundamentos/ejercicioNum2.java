@@ -1,6 +1,6 @@
 public class ejercicioNum2 {
     public static void main(String[] args) {
-        int totalEstudiantes = Reutilizacion.ingresarEntero("profesor, por favor escriba la cantidad total de los estudiantes: ");
+        int totalEstudiantes = notas.Reutilizacion.ingresarEntero("profesor, por favor escriba la cantidad total de los estudiantes: ");
         int sumaEdades = sumatoriaEdades(totalEstudiantes);
         double promedio = calcularPromedio(totalEstudiantes, sumaEdades);
         generarMensaje(totalEstudiantes, promedio);
@@ -9,7 +9,7 @@ public class ejercicioNum2 {
     public static int sumatoriaEdades(int totalEstudiantes) {
         int sumaTotal = 0;
         for (int numDelEstudiante = 1; numDelEstudiante <= totalEstudiantes; numDelEstudiante++) {
-            int edad = Reutilizacion.ingresarEntero("Profesor, ingrese la edad del estudiante " + numDelEstudiante + ": ");
+            int edad = notas.Reutilizacion.ingresarEntero("Profesor, ingrese la edad del estudiante " + numDelEstudiante + ": ");
             sumaTotal = sumaTotal + edad;
         }
         return sumaTotal;

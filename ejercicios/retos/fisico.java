@@ -1,10 +1,10 @@
 public class fisico {
     static void main(String[] args) {
-        String nombre = Reutilizacion.ingresarTexto("ingrese su nombre: ");
-        int edad = Reutilizacion.ingresarEntero("ingrese su edad: ");
-        double tiempoCarrera = Reutilizacion.ingresarRealD("ingrese el tiempo en segundos de la carrera de 100mts: ");
-        int numAbdominales = Reutilizacion.ingresarEntero("ingrese numero de abdominales hechas en un minuto: ");
-        int numFlexPecho = Reutilizacion.ingresarEntero("ingrese la cantidad de flexiones de pecho: ");
+        String nombre = notas.Reutilizacion.ingresarTexto("ingrese su nombre: ");
+        int edad = notas.Reutilizacion.ingresarEntero("ingrese su edad: ");
+        double tiempoCarrera = notas.Reutilizacion.ingresarRealD("ingrese el tiempo en segundos de la carrera de 100mts: ");
+        int numAbdominales = notas.Reutilizacion.ingresarEntero("ingrese numero de abdominales hechas en un minuto: ");
+        int numFlexPecho = notas.Reutilizacion.ingresarEntero("ingrese la cantidad de flexiones de pecho: ");
         double decisionCarrera = decision(tiempoCarrera);
         double decisionAbdominales = decision2(numAbdominales);
         double decisionFlexiones = decision3(numFlexPecho);

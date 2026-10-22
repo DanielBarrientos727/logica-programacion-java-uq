@@ -1,7 +1,7 @@
 public class MatematicaBrillante {
     public static void main(String[] args) {
-        int grado = Reutilizacion.ingresarEntero("Ingrese el grado escolar (1 a 6): ");
-        int puntaje = Reutilizacion.ingresarEntero("Ingrese el puntaje de habilidad en matemáticas (1 a 5): ");
+        int grado = notas.Reutilizacion.ingresarEntero("Ingrese el grado escolar (1 a 6): ");
+        int puntaje = notas.Reutilizacion.ingresarEntero("Ingrese el puntaje de habilidad en matemáticas (1 a 5): ");
         
         String grupoAsignado = "No clasificado";
         

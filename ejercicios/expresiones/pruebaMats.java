@@ -1,7 +1,7 @@
 public class pruebaMats {
     static void main(String[] args) {
-        String grado = Reutilizacion.ingresarTexto("ingrese el grado escolar del estudiante (primaria, intermedio, secundaria): ");
-        double notaHabilidad = Reutilizacion.ingresarRealD("ingrese la habilidad matematica del estudiante de 1 a 5: ");
+        String grado = notas.Reutilizacion.ingresarTexto("ingrese el grado escolar del estudiante (primaria, intermedio, secundaria): ");
+        double notaHabilidad = notas.Reutilizacion.ingresarRealD("ingrese la habilidad matematica del estudiante de 1 a 5: ");
         String desicion = decidirClasificacion(grado, notaHabilidad);
         generarMensaje(desicion);
     }
